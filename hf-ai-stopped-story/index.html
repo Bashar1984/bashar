@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" data-composition-variables='[{"id": "color-ink", "type": "color", "label": "Ink", "default": "#121317"}, {"id": "color-accent", "type": "color", "label": "Accent (payoff)", "default": "#FFC93C"}, {"id": "color-sam", "type": "color", "label": "Sam coat colour", "default": "#2348F2"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #BFD0FF; }
+      #root { position: relative; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="66" data-width="1920" data-height="1080">
+      <div id="wake" data-composition-id="wake" data-composition-src="compositions/wake.html" data-start="0" data-duration="7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="outage" data-composition-id="outage" data-composition-src="compositions/outage.html" data-start="7" data-duration="7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="bus" data-composition-id="bus" data-composition-src="compositions/bus.html" data-start="14" data-duration="8" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:3"></div>
+      <div id="run" data-composition-id="run" data-composition-src="compositions/run.html" data-start="22" data-duration="7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:4"></div>
+      <div id="tourist" data-composition-id="tourist" data-composition-src="compositions/tourist.html" data-start="29" data-duration="11" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="walk" data-composition-id="walk" data-composition-src="compositions/walk.html" data-start="40" data-duration="10" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:6"></div>
+      <div id="twist" data-composition-id="twist" data-composition-src="compositions/twist.html" data-start="50" data-duration="10" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:7"></div>
+      <div id="end" data-composition-id="end" data-composition-src="compositions/end.html" data-start="60" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:8"></div>
+      <audio id="mu-0" class="clip" src="assets/music-morning.wav" data-start="0" data-duration="10.0" data-track-index="2" data-volume="0.5"></audio>
+      <audio id="mu-1" class="clip" src="assets/music-tense.wav" data-start="10.0" data-duration="23.0" data-track-index="2" data-volume="0.4"></audio>
+      <audio id="mu-2" class="clip" src="assets/music-warm.wav" data-start="52.5" data-duration="13.5" data-track-index="2" data-volume="0.55"></audio>
+      <audio id="fx-0" class="clip" src="assets/sfx-tap-a.wav" data-start="0.22" data-duration="0.15" data-track-index="3" data-volume="0.6"></audio>
+      <audio id="fx-1" class="clip" src="assets/sfx-tap-b.wav" data-start="0.32" data-duration="0.15" data-track-index="4" data-volume="0.6"></audio>
+      <audio id="fx-2" class="clip" src="assets/sfx-tap-a.wav" data-start="0.42" data-duration="0.15" data-track-index="3" data-volume="0.6"></audio>
+      <audio id="fx-3" class="clip" src="assets/sfx-tap-b.wav" data-start="0.52" data-duration="0.15" data-track-index="4" data-volume="0.6"></audio>
+      <audio id="fx-4" class="clip" src="assets/sfx-whoosh.wav" data-start="4.6" data-duration="0.44" data-track-index="3" data-volume="0.5"></audio>
+      <audio id="fx-5" class="clip" src="assets/sfx-glitch.wav" data-start="10.03" data-duration="0.45" data-track-index="3" data-volume="0.9"></audio>
+      <audio id="fx-6" class="clip" src="assets/sfx-whoosh.wav" data-start="14.3" data-duration="0.44" data-track-index="3" data-volume="0.5"></audio>
+      <audio id="fx-7" class="clip" src="assets/sfx-glitch.wav" data-start="17.23" data-duration="0.45" data-track-index="3" data-volume="0.9"></audio>
+      <audio id="fx-8" class="clip" src="assets/sfx-pop.wav" data-start="17.33" data-duration="0.43" data-track-index="4" data-volume="0.6"></audio>
+      <audio id="fx-9" class="clip" src="assets/sfx-whoosh.wav" data-start="18.6" data-duration="0.44" data-track-index="3" data-volume="0.8"></audio>
+      <audio id="fx-10" class="clip" src="assets/sfx-tap-b.wav" data-start="22.0" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-11" class="clip" src="assets/sfx-tap-b.wav" data-start="22.5" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-12" class="clip" src="assets/sfx-tap-b.wav" data-start="22.95" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-13" class="clip" src="assets/sfx-tap-b.wav" data-start="23.36" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-14" class="clip" src="assets/sfx-tap-b.wav" data-start="23.72" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-15" class="clip" src="assets/sfx-tap-b.wav" data-start="24.05" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-16" class="clip" src="assets/sfx-tap-b.wav" data-start="24.34" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-17" class="clip" src="assets/sfx-tap-b.wav" data-start="24.61" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-18" class="clip" src="assets/sfx-tap-b.wav" data-start="24.85" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-19" class="clip" src="assets/sfx-tap-b.wav" data-start="25.06" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-20" class="clip" src="assets/sfx-tap-b.wav" data-start="25.26" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-21" class="clip" src="assets/sfx-tap-b.wav" data-start="25.43" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-22" class="clip" src="assets/sfx-tap-b.wav" data-start="25.59" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-23" class="clip" src="assets/sfx-tap-b.wav" data-start="25.73" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-24" class="clip" src="assets/sfx-tap-b.wav" data-start="25.86" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-25" class="clip" src="assets/sfx-tap-b.wav" data-start="25.99" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-26" class="clip" src="assets/sfx-tap-b.wav" data-start="26.12" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-27" class="clip" src="assets/sfx-tap-b.wav" data-start="26.25" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-28" class="clip" src="assets/sfx-tap-b.wav" data-start="26.38" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-29" class="clip" src="assets/sfx-tap-b.wav" data-start="26.51" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-30" class="clip" src="assets/sfx-tap-b.wav" data-start="26.64" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-31" class="clip" src="assets/sfx-tap-b.wav" data-start="26.77" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-32" class="clip" src="assets/sfx-tap-b.wav" data-start="26.9" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-33" class="clip" src="assets/sfx-tap-b.wav" data-start="27.03" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-34" class="clip" src="assets/sfx-tap-b.wav" data-start="27.16" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-35" class="clip" src="assets/sfx-tap-b.wav" data-start="27.29" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-36" class="clip" src="assets/sfx-tap-b.wav" data-start="27.42" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-37" class="clip" src="assets/sfx-tap-b.wav" data-start="27.55" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-38" class="clip" src="assets/sfx-tap-b.wav" data-start="27.68" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-39" class="clip" src="assets/sfx-tap-b.wav" data-start="27.81" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-40" class="clip" src="assets/sfx-tap-b.wav" data-start="27.94" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-41" class="clip" src="assets/sfx-tap-b.wav" data-start="28.07" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-42" class="clip" src="assets/sfx-tap-b.wav" data-start="28.2" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-43" class="clip" src="assets/sfx-tap-b.wav" data-start="28.33" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-44" class="clip" src="assets/sfx-tap-b.wav" data-start="28.46" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-45" class="clip" src="assets/sfx-tap-b.wav" data-start="28.59" data-duration="0.15" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="fx-46" class="clip" src="assets/sfx-tap-b.wav" data-start="28.72" data-duration="0.15" data-track-index="3" data-volume="0.45"></audio>
+      <audio id="fx-47" class="clip" src="assets/sfx-pop.wav" data-start="31.13" data-duration="0.43" data-track-index="3" data-volume="0.7"></audio>
+      <audio id="fx-48" class="clip" src="assets/sfx-pop.wav" data-start="35.73" data-duration="0.43" data-track-index="3" data-volume="0.7"></audio>
+      <audio id="fx-49" class="clip" src="assets/sfx-tap-b.wav" data-start="40.2" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-50" class="clip" src="assets/sfx-tap-a.wav" data-start="40.6" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-51" class="clip" src="assets/sfx-tap-b.wav" data-start="41.0" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-52" class="clip" src="assets/sfx-tap-a.wav" data-start="41.4" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-53" class="clip" src="assets/sfx-tap-b.wav" data-start="41.8" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-54" class="clip" src="assets/sfx-tap-a.wav" data-start="42.2" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-55" class="clip" src="assets/sfx-tap-b.wav" data-start="42.6" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-56" class="clip" src="assets/sfx-tap-a.wav" data-start="43.0" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-57" class="clip" src="assets/sfx-tap-b.wav" data-start="43.4" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-58" class="clip" src="assets/sfx-tap-a.wav" data-start="43.8" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-59" class="clip" src="assets/sfx-tap-b.wav" data-start="44.2" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-60" class="clip" src="assets/sfx-tap-a.wav" data-start="44.6" data-duration="0.15" data-track-index="3" data-volume="0.25"></audio>
+      <audio id="fx-61" class="clip" src="assets/sfx-pop.wav" data-start="53.83" data-duration="0.43" data-track-index="3" data-volume="0.7"></audio>
+      <audio id="fx-62" class="clip" src="assets/sfx-pop.wav" data-start="56.53" data-duration="0.43" data-track-index="3" data-volume="0.8"></audio>
+      <audio id="fx-63" class="clip" src="assets/sfx-riser.wav" data-start="61.04" data-duration="0.60" data-track-index="3" data-volume="0.8"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

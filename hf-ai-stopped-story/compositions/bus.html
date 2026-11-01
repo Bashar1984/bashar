@@ -1,0 +1,139 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Nunito", sans-serif; }
+.chr { position: absolute; width: 240px; height: 540px; }
+.leg { position: absolute; top: 380px; width: 36px; height: 150px; border-radius: 18px; transform-origin: 18px 10px; }
+.shoe { position: absolute; bottom: -6px; left: -6px; width: 52px; height: 22px; border-radius: 12px; background: #121317; }
+.body { position: absolute; left: 48px; top: 215px; width: 144px; height: 195px; border-radius: 64px 64px 26px 26px; }
+.arm { position: absolute; top: 232px; width: 30px; height: 150px; border-radius: 15px; transform-origin: 15px 12px; }
+.hand { position: absolute; bottom: -10px; left: -3px; width: 36px; height: 36px; border-radius: 50%; }
+.head { position: absolute; left: 45px; top: 58px; width: 150px; height: 150px; border-radius: 50%; transform-origin: 75px 150px; }
+.hair { position: absolute; left: -6px; top: -10px; width: 162px; height: 78px; border-radius: 80px 80px 24px 24px; }
+.eye { position: absolute; top: 70px; width: 16px; height: 22px; border-radius: 50%; background: #121317; transform-origin: 8px 11px; }
+.mouth { position: absolute; left: 45px; top: 100px; overflow: visible; }
+.sweat { position: absolute; left: 150px; top: 40px; width: 18px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #5FB3FF; opacity: 0; }
+.narr { position: absolute; left: 192px; font-weight: 900; font-size: 54px; line-height: 1.15; color: #121317; white-space: nowrap; }
+.narr span { display: inline-block; margin-right: 0.24em; opacity: 0; }
+.ck { position: absolute; left: 1640px; top: 80px; width: 168px; height: 168px; border-radius: 50%; background: #FFFFFF; border: 10px solid #121317;
+  display: flex; align-items: center; justify-content: center; font-family: "Archivo Black", sans-serif; font-size: 46px; color: #121317; }
+.bubble { position: absolute; padding: 24px 32px; border-radius: 28px; background: #FFFFFF; font-weight: 800; font-size: 40px; color: #121317;
+  white-space: nowrap; box-shadow: 0 8px 18px rgba(18,19,23,0.15); opacity: 0; }
+.tail { position: absolute; bottom: -24px; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 26px solid #FFFFFF; }
+.bld { position: absolute; bottom: 120px; border-radius: 6px 6px 0 0;
+  background-image: repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,0.55) 22px 44px, transparent 44px 66px),
+                    repeating-linear-gradient(0deg, transparent 0 26px, rgba(0,0,0,0) 26px 52px); }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.6); }
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; }
+.phone { position: absolute; width: 360px; height: 700px; border-radius: 54px; background: #1B1C20; padding: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.25); opacity: 0; }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 44px; overflow: hidden; background: #EEF0F4; }
+
+    #root { background: #FFD9A8; }
+    
+  </style>
+  <div id="root" data-composition-id="bus" data-width="1920" data-height="1080">
+    
+    <div class="bld" style="left:0px;width:300px;height:440px;background-color:#C48F6A"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:204px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:204px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:204px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:204px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div><div class="win" style="left:204px;top:256px"></div><div class="win" style="left:20px;top:314px"></div><div class="win" style="left:66px;top:314px"></div><div class="win" style="left:112px;top:314px"></div><div class="win" style="left:158px;top:314px"></div><div class="win" style="left:204px;top:314px"></div></div><div class="bld" style="left:330px;width:240px;height:560px;background-color:#C48F6A"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div><div class="win" style="left:20px;top:314px"></div><div class="win" style="left:66px;top:314px"></div><div class="win" style="left:112px;top:314px"></div><div class="win" style="left:158px;top:314px"></div><div class="win" style="left:20px;top:372px"></div><div class="win" style="left:66px;top:372px"></div><div class="win" style="left:112px;top:372px"></div><div class="win" style="left:158px;top:372px"></div><div class="win" style="left:20px;top:430px"></div><div class="win" style="left:66px;top:430px"></div><div class="win" style="left:112px;top:430px"></div><div class="win" style="left:158px;top:430px"></div></div><div class="bld" style="left:1500px;width:420px;height:500px;background-color:#C48F6A"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:204px;top:24px"></div><div class="win" style="left:250px;top:24px"></div><div class="win" style="left:296px;top:24px"></div><div class="win" style="left:342px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:204px;top:82px"></div><div class="win" style="left:250px;top:82px"></div><div class="win" style="left:296px;top:82px"></div><div class="win" style="left:342px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:204px;top:140px"></div><div class="win" style="left:250px;top:140px"></div><div class="win" style="left:296px;top:140px"></div><div class="win" style="left:342px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:204px;top:198px"></div><div class="win" style="left:250px;top:198px"></div><div class="win" style="left:296px;top:198px"></div><div class="win" style="left:342px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div><div class="win" style="left:204px;top:256px"></div><div class="win" style="left:250px;top:256px"></div><div class="win" style="left:296px;top:256px"></div><div class="win" style="left:342px;top:256px"></div><div class="win" style="left:20px;top:314px"></div><div class="win" style="left:66px;top:314px"></div><div class="win" style="left:112px;top:314px"></div><div class="win" style="left:158px;top:314px"></div><div class="win" style="left:204px;top:314px"></div><div class="win" style="left:250px;top:314px"></div><div class="win" style="left:296px;top:314px"></div><div class="win" style="left:342px;top:314px"></div><div class="win" style="left:20px;top:372px"></div><div class="win" style="left:66px;top:372px"></div><div class="win" style="left:112px;top:372px"></div><div class="win" style="left:158px;top:372px"></div><div class="win" style="left:204px;top:372px"></div><div class="win" style="left:250px;top:372px"></div><div class="win" style="left:296px;top:372px"></div><div class="win" style="left:342px;top:372px"></div></div>
+    <div class="ground" style="background:#C9B8A6"></div>
+    <div style="position:absolute;left:420px;top:540px;width:16px;height:420px;background:#121317"></div>
+    <div style="position:absolute;left:360px;top:500px;width:136px;height:70px;border-radius:12px;background:#1E6B52;color:#FFFFFF;font-weight:900;font-size:34px;display:flex;align-items:center;justify-content:center">BUS</div>
+    
+      <div id="bus-sam" class="chr" style="left:520px;top:420px"><div id="bus-sam-bob" style="position:absolute;inset:0">
+        <div id="bus-sam-legL" class="leg" style="left:78px;background:#26282E"><div class="shoe"></div></div>
+        <div id="bus-sam-legR" class="leg" style="left:126px;background:#26282E"><div class="shoe"></div></div>
+        <div id="bus-sam-armL" class="arm" style="left:30px;background:#2348F2"><div class="hand" style="background:#D99A6C"></div></div>
+        <div id="bus-sam-armR" class="arm" style="left:180px;background:#2348F2"><div class="hand" style="background:#D99A6C"></div></div>
+        <div id="bus-sam-body" class="body" style="background:#2348F2"></div>
+        <div id="bus-sam-head" class="head" style="background:#D99A6C">
+          <div class="hair" style="background:#2B1E1A"></div>
+          <div id="bus-sam-eyeL" class="eye" style="left:44px"></div><div id="bus-sam-eyeR" class="eye" style="left:90px"></div>
+          <svg class="mouth" width="60" height="40" viewBox="0 0 60 40"><path id="bus-sam-m-smile" d="M8 6 Q30 28 52 6" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="1"/><path id="bus-sam-m-flat" d="M14 14 L46 14" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><ellipse id="bus-sam-m-o" cx="30" cy="16" rx="11" ry="14" fill="#121317" opacity="0"/><path id="bus-sam-m-frown" d="M10 24 Q30 4 50 24" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><path id="bus-sam-m-grin" d="M4 4 Q30 40 56 4 Z" fill="#121317" opacity="0"/></svg>
+          <div id="bus-sam-sweat" class="sweat"></div>
+        </div>
+      </div></div>
+    <div id="bus-bus" style="position:absolute;left:820px;top:420px;width:1000px;height:470px;border-radius:40px;background:#FFC93C">
+      <div style="position:absolute;left:60px;top:60px;width:880px;height:150px;border-radius:18px;background:#8FD3FF"></div>
+      <div style="position:absolute;left:40px;top:230px;width:120px;height:200px;border-radius:12px;background:#E0A92D"></div>
+      <div id="bus-reader" style="position:absolute;left:180px;top:250px;width:150px;height:120px;border-radius:16px;background:#121317">
+        <div id="bus-rs" style="position:absolute;left:12px;top:12px;width:126px;height:62px;border-radius:8px;background:#9BE3B5"></div></div>
+      <div style="position:absolute;left:150px;bottom:-50px;width:110px;height:110px;border-radius:50%;background:#121317"></div>
+      <div style="position:absolute;right:150px;bottom:-50px;width:110px;height:110px;border-radius:50%;background:#121317"></div>
+    </div>
+    <div id="bus-card" class="bubble" style="left:760px;top:250px;font-size:38px;color:#F2553C">Card declined: manual check<div class="tail" style="left:60px"></div></div>
+    <div id="bus-n0" class="narr" style="top:118px"><span>The</span><span>bus</span><span>wouldn't</span><span>take</span><span>her</span><span>card.</span></div>
+    <div id="bus-n1" class="narr" style="top:188px"><span>So</span><span>she</span><span>ran.</span></div>
+    <div id="bus-ck-box" class="ck" style=""><div id="bus-ck">8:20</div></div>
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const $ = (p, part) => "#" + p + "-" + part;
+function mood(p, t, to, from) {
+  tl.to($(p, "m-" + from), { opacity: 0, duration: 0.06 }, t);
+  tl.to($(p, "m-" + to), { opacity: 1, duration: 0.06 }, t);
+  tl.to($(p, "head"), { scaleY: 0.9, scaleX: 1.05, duration: 0.08, ease: "power2.in" }, t - 0.08);
+  tl.to($(p, "head"), { scaleY: 1, scaleX: 1, duration: 0.35, ease: "back.out(2.4)" }, t);
+}
+function blink(p, t) {
+  tl.to([$(p, "eyeL"), $(p, "eyeR")], { scaleY: 0.1, duration: 0.06 }, t);
+  tl.to([$(p, "eyeL"), $(p, "eyeR")], { scaleY: 1, duration: 0.08 }, t + 0.07);
+}
+function stride(p, t0, dur, amp, step) {
+  const n = Math.max(2, Math.round(dur / step));
+  const kl = [], kr = [], al = [], ar = [];
+  for (let i = 0; i < n; i++) {
+    const s = i % 2 ? 1 : -1;
+    kl.push({ rotation: amp * s, duration: step, ease: "sine.inOut" });
+    kr.push({ rotation: -amp * s, duration: step, ease: "sine.inOut" });
+    al.push({ rotation: -amp * 0.85 * s, duration: step, ease: "sine.inOut" });
+    ar.push({ rotation: amp * 0.85 * s, duration: step, ease: "sine.inOut" });
+  }
+  [kl, kr, al, ar].forEach((k) => k.push({ rotation: 0, duration: 0.18, ease: "power2.out" }));
+  tl.to($(p, "legL"), { keyframes: kl }, t0);
+  tl.to($(p, "legR"), { keyframes: kr }, t0);
+  tl.to($(p, "armL"), { keyframes: al }, t0 + 0.05);
+  tl.to($(p, "armR"), { keyframes: ar }, t0 + 0.05);
+  const bob = [];
+  for (let i = 0; i < n; i++) bob.push({ y: i % 2 ? -10 : 0, duration: step, ease: "sine.inOut" });
+  bob.push({ y: 0, duration: 0.18 });
+  tl.to($(p, "bob"), { keyframes: bob }, t0);
+}
+function narrate(id, t) {
+  tl.fromTo("#" + id + " span", { opacity: 0, filter: "blur(5px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.08, ease: "power2.out" }, t);
+}
+function clock(id, t0, dur, m0, m1) {
+  const el = document.querySelector("#" + id), box = document.querySelector("#" + id + "-box"), o = { m: m0 };
+  const paint = () => {
+    const m = Math.floor(o.m), h = m >= 60 ? 9 : 8, mm = m >= 60 ? m - 60 : m;
+    el.textContent = h + ":" + String(mm).padStart(2, "0");
+    box.style.background = m >= 45 ? "#F2553C" : "#FFFFFF";
+    el.style.color = m >= 45 ? "#FFFFFF" : "#121317";
+  };
+  paint();
+  tl.fromTo(o, { m: m0 }, { m: m1, duration: dur, ease: "none", onUpdate: paint }, t0);
+}
+function glitch(sel, t) {
+  tl.to(sel, { keyframes: [{ x: 14, duration: 0.04 }, { x: -16, duration: 0.05 }, { x: 8, duration: 0.04 }, { x: 0, duration: 0.06 }] }, t);
+}
+
+
+    clock("bus-ck", 0, 8, 20, 27);
+    tl.fromTo("#bus-bus", { x: 1200 }, { x: 0, duration: 1.4, ease: "power3.out" }, 0.3);
+    blink("bus-sam", 1.4);
+    stride("bus-sam", 1.8, 0.7, 22, 0.17);
+    tl.to("#bus-sam", { x: 120, duration: 0.7, ease: "power1.inOut" }, 1.8);
+    tl.to("#bus-sam-armR", { rotation: -80, duration: 0.3, ease: "power2.out" }, 2.7);
+    glitch("#bus-reader", 3.2);
+    tl.to("#bus-rs", { backgroundColor: "#F2553C", duration: 0.08 }, 3.22);
+    tl.fromTo("#bus-card", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 3.3);
+    narrate("bus-n0", 3.5);
+    mood("bus-sam", 3.6, "frown", "smile");
+    tl.to("#bus-sam-armR", { rotation: 0, duration: 0.3 }, 4.2);
+    tl.to("#bus-card", { opacity: 0, duration: 0.2 }, 4.6);
+    tl.to("#bus-bus", { x: -2200, duration: 1.2, ease: "power3.in" }, 4.5);
+    mood("bus-sam", 5.6, "flat", "frown");
+    narrate("bus-n1", 6.0);
+    stride("bus-sam", 6.6, 1.4, 40, 0.11);
+    tl.to("#bus-sam", { x: 1700, duration: 1.4, ease: "power2.in" }, 6.6);
+    
+    window.__timelines["bus"] = tl;
+  </script>
+</template>

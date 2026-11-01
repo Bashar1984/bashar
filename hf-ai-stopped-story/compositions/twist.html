@@ -1,0 +1,147 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Nunito", sans-serif; }
+.chr { position: absolute; width: 240px; height: 540px; }
+.leg { position: absolute; top: 380px; width: 36px; height: 150px; border-radius: 18px; transform-origin: 18px 10px; }
+.shoe { position: absolute; bottom: -6px; left: -6px; width: 52px; height: 22px; border-radius: 12px; background: #121317; }
+.body { position: absolute; left: 48px; top: 215px; width: 144px; height: 195px; border-radius: 64px 64px 26px 26px; }
+.arm { position: absolute; top: 232px; width: 30px; height: 150px; border-radius: 15px; transform-origin: 15px 12px; }
+.hand { position: absolute; bottom: -10px; left: -3px; width: 36px; height: 36px; border-radius: 50%; }
+.head { position: absolute; left: 45px; top: 58px; width: 150px; height: 150px; border-radius: 50%; transform-origin: 75px 150px; }
+.hair { position: absolute; left: -6px; top: -10px; width: 162px; height: 78px; border-radius: 80px 80px 24px 24px; }
+.eye { position: absolute; top: 70px; width: 16px; height: 22px; border-radius: 50%; background: #121317; transform-origin: 8px 11px; }
+.mouth { position: absolute; left: 45px; top: 100px; overflow: visible; }
+.sweat { position: absolute; left: 150px; top: 40px; width: 18px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #5FB3FF; opacity: 0; }
+.narr { position: absolute; left: 192px; font-weight: 900; font-size: 54px; line-height: 1.15; color: #121317; white-space: nowrap; }
+.narr span { display: inline-block; margin-right: 0.24em; opacity: 0; }
+.ck { position: absolute; left: 1640px; top: 80px; width: 168px; height: 168px; border-radius: 50%; background: #FFFFFF; border: 10px solid #121317;
+  display: flex; align-items: center; justify-content: center; font-family: "Archivo Black", sans-serif; font-size: 46px; color: #121317; }
+.bubble { position: absolute; padding: 24px 32px; border-radius: 28px; background: #FFFFFF; font-weight: 800; font-size: 40px; color: #121317;
+  white-space: nowrap; box-shadow: 0 8px 18px rgba(18,19,23,0.15); opacity: 0; }
+.tail { position: absolute; bottom: -24px; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 26px solid #FFFFFF; }
+.bld { position: absolute; bottom: 120px; border-radius: 6px 6px 0 0;
+  background-image: repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,0.55) 22px 44px, transparent 44px 66px),
+                    repeating-linear-gradient(0deg, transparent 0 26px, rgba(0,0,0,0) 26px 52px); }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.6); }
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; }
+.phone { position: absolute; width: 360px; height: 700px; border-radius: 54px; background: #1B1C20; padding: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.25); opacity: 0; }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 44px; overflow: hidden; background: #EEF0F4; }
+
+    #root { background: #E9E4FF; }
+    
+  </style>
+  <div id="root" data-composition-id="twist" data-width="1920" data-height="1080">
+    
+    <div class="ground" style="background:#B9B0E8;height:160px"></div>
+    <div style="position:absolute;left:1120px;top:300px;width:300px;height:420px;border-radius:30px 30px 10px 10px;background:#3A3D45"></div>
+    
+      <div id="twist-t" class="chr" style="left:1150px;top:330px"><div id="twist-t-bob" style="position:absolute;inset:0">
+        <div id="twist-t-legL" class="leg" style="left:78px;background:#4A3B33"><div class="shoe"></div></div>
+        <div id="twist-t-legR" class="leg" style="left:126px;background:#4A3B33"><div class="shoe"></div></div>
+        <div id="twist-t-armL" class="arm" style="left:30px;background:#F28C28"><div class="hand" style="background:#F1C9A5"></div></div>
+        <div id="twist-t-armR" class="arm" style="left:180px;background:#F28C28"><div class="hand" style="background:#F1C9A5"></div></div>
+        <div id="twist-t-body" class="body" style="background:#F28C28"></div>
+        <div id="twist-t-head" class="head" style="background:#F1C9A5">
+          <div class="hair" style="background:#A7A7A7"></div>
+          <div id="twist-t-eyeL" class="eye" style="left:44px"></div><div id="twist-t-eyeR" class="eye" style="left:90px"></div>
+          <svg class="mouth" width="60" height="40" viewBox="0 0 60 40"><path id="twist-t-m-smile" d="M8 6 Q30 28 52 6" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="1"/><path id="twist-t-m-flat" d="M14 14 L46 14" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><ellipse id="twist-t-m-o" cx="30" cy="16" rx="11" ry="14" fill="#121317" opacity="0"/><path id="twist-t-m-frown" d="M10 24 Q30 4 50 24" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><path id="twist-t-m-grin" d="M4 4 Q30 40 56 4 Z" fill="#121317" opacity="0"/></svg>
+          <div id="twist-t-sweat" class="sweat"></div><div style="position:absolute;left:10px;top:-34px;width:130px;height:52px;border-radius:65px 65px 16px 16px;background:#8A2E3B"></div>
+        </div>
+      </div></div>
+    <div id="twist-chair" style="position:absolute;left:1100px;top:280px;width:340px;height:470px;border-radius:40px 40px 14px 14px;background:#2B2D33"></div>
+    <div style="position:absolute;left:900px;top:700px;width:760px;height:60px;border-radius:10px;background:#6B4E3D"></div>
+    <div style="position:absolute;left:940px;top:760px;width:40px;height:200px;background:#5A4134"></div>
+    <div style="position:absolute;left:1580px;top:760px;width:40px;height:200px;background:#5A4134"></div>
+    <div id="twist-plate" style="position:absolute;left:1180px;top:640px;width:280px;height:60px;border-radius:8px;background:#121317;color:#FFFFFF;font-weight:900;font-size:28px;display:flex;align-items:center;justify-content:center">Head of Hiring</div>
+    
+      <div id="twist-sam" class="chr" style="left:300px;top:420px"><div id="twist-sam-bob" style="position:absolute;inset:0">
+        <div id="twist-sam-legL" class="leg" style="left:78px;background:#26282E"><div class="shoe"></div></div>
+        <div id="twist-sam-legR" class="leg" style="left:126px;background:#26282E"><div class="shoe"></div></div>
+        <div id="twist-sam-armL" class="arm" style="left:30px;background:#2348F2"><div class="hand" style="background:#D99A6C"></div></div>
+        <div id="twist-sam-armR" class="arm" style="left:180px;background:#2348F2"><div class="hand" style="background:#D99A6C"></div></div>
+        <div id="twist-sam-body" class="body" style="background:#2348F2"></div>
+        <div id="twist-sam-head" class="head" style="background:#D99A6C">
+          <div class="hair" style="background:#2B1E1A"></div>
+          <div id="twist-sam-eyeL" class="eye" style="left:44px"></div><div id="twist-sam-eyeR" class="eye" style="left:90px"></div>
+          <svg class="mouth" width="60" height="40" viewBox="0 0 60 40"><path id="twist-sam-m-smile" d="M8 6 Q30 28 52 6" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><path id="twist-sam-m-flat" d="M14 14 L46 14" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><ellipse id="twist-sam-m-o" cx="30" cy="16" rx="11" ry="14" fill="#121317" opacity="0"/><path id="twist-sam-m-frown" d="M10 24 Q30 4 50 24" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="1"/><path id="twist-sam-m-grin" d="M4 4 Q30 40 56 4 Z" fill="#121317" opacity="0"/></svg>
+          <div id="twist-sam-sweat" class="sweat"></div>
+        </div>
+      </div></div>
+    <div id="twist-b1" class="bubble" style="left:760px;top:120px">You got me here without a single app.<div class="tail" style="left:520px"></div></div>
+    <div id="twist-b2" class="bubble" style="left:900px;top:120px;font-size:48px">When can you start?<div class="tail" style="left:360px"></div></div>
+    
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const $ = (p, part) => "#" + p + "-" + part;
+function mood(p, t, to, from) {
+  tl.to($(p, "m-" + from), { opacity: 0, duration: 0.06 }, t);
+  tl.to($(p, "m-" + to), { opacity: 1, duration: 0.06 }, t);
+  tl.to($(p, "head"), { scaleY: 0.9, scaleX: 1.05, duration: 0.08, ease: "power2.in" }, t - 0.08);
+  tl.to($(p, "head"), { scaleY: 1, scaleX: 1, duration: 0.35, ease: "back.out(2.4)" }, t);
+}
+function blink(p, t) {
+  tl.to([$(p, "eyeL"), $(p, "eyeR")], { scaleY: 0.1, duration: 0.06 }, t);
+  tl.to([$(p, "eyeL"), $(p, "eyeR")], { scaleY: 1, duration: 0.08 }, t + 0.07);
+}
+function stride(p, t0, dur, amp, step) {
+  const n = Math.max(2, Math.round(dur / step));
+  const kl = [], kr = [], al = [], ar = [];
+  for (let i = 0; i < n; i++) {
+    const s = i % 2 ? 1 : -1;
+    kl.push({ rotation: amp * s, duration: step, ease: "sine.inOut" });
+    kr.push({ rotation: -amp * s, duration: step, ease: "sine.inOut" });
+    al.push({ rotation: -amp * 0.85 * s, duration: step, ease: "sine.inOut" });
+    ar.push({ rotation: amp * 0.85 * s, duration: step, ease: "sine.inOut" });
+  }
+  [kl, kr, al, ar].forEach((k) => k.push({ rotation: 0, duration: 0.18, ease: "power2.out" }));
+  tl.to($(p, "legL"), { keyframes: kl }, t0);
+  tl.to($(p, "legR"), { keyframes: kr }, t0);
+  tl.to($(p, "armL"), { keyframes: al }, t0 + 0.05);
+  tl.to($(p, "armR"), { keyframes: ar }, t0 + 0.05);
+  const bob = [];
+  for (let i = 0; i < n; i++) bob.push({ y: i % 2 ? -10 : 0, duration: step, ease: "sine.inOut" });
+  bob.push({ y: 0, duration: 0.18 });
+  tl.to($(p, "bob"), { keyframes: bob }, t0);
+}
+function narrate(id, t) {
+  tl.fromTo("#" + id + " span", { opacity: 0, filter: "blur(5px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.08, ease: "power2.out" }, t);
+}
+function clock(id, t0, dur, m0, m1) {
+  const el = document.querySelector("#" + id), box = document.querySelector("#" + id + "-box"), o = { m: m0 };
+  const paint = () => {
+    const m = Math.floor(o.m), h = m >= 60 ? 9 : 8, mm = m >= 60 ? m - 60 : m;
+    el.textContent = h + ":" + String(mm).padStart(2, "0");
+    box.style.background = m >= 45 ? "#F2553C" : "#FFFFFF";
+    el.style.color = m >= 45 ? "#FFFFFF" : "#121317";
+  };
+  paint();
+  tl.fromTo(o, { m: m0 }, { m: m1, duration: dur, ease: "none", onUpdate: paint }, t0);
+}
+function glitch(sel, t) {
+  tl.to(sel, { keyframes: [{ x: 14, duration: 0.04 }, { x: -16, duration: 0.05 }, { x: 8, duration: 0.04 }, { x: 0, duration: 0.06 }] }, t);
+}
+
+
+    stride("twist-sam", 0.2, 1.2, 22, 0.2);
+    tl.fromTo("#twist-sam", { x: -400 }, { x: 0, duration: 1.2, ease: "power2.out" }, 0.2);
+    blink("twist-sam", 1.9);
+    // the chair turns: it is the tourist
+    tl.fromTo("#twist-chair", { scaleX: 1, opacity: 1 }, { scaleX: 0, opacity: 0, duration: 0.45, ease: "power2.in" }, 2.6);
+    tl.fromTo("#twist-t", { scaleX: 0.2, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)" }, 3.0);
+    mood("twist-sam", 3.4, "o", "frown");
+    tl.to("#twist-sam-head", { y: -18, duration: 0.15, ease: "power2.out" }, 3.4);
+    tl.to("#twist-sam-head", { y: 0, duration: 0.3, ease: "power2.inOut" }, 3.6);
+    tl.fromTo("#twist-b1", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 3.8);
+    tl.to("#twist-b1", { opacity: 0, duration: 0.2 }, 6.3);
+    tl.fromTo("#twist-b2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 6.5);
+    blink("twist-sam", 7.0);
+    mood("twist-sam", 7.6, "grin", "o");
+    tl.to("#twist-sam-bob", { keyframes: [{ y: 20, scaleY: 0.92, duration: 0.12, ease: "power2.in" }, { y: -90, scaleY: 1.06, duration: 0.25, ease: "power2.out" },
+      { y: 0, scaleY: 1, duration: 0.3, ease: "power2.in" }, { y: 8, scaleY: 0.95, duration: 0.08 }, { y: 0, scaleY: 1, duration: 0.2, ease: "back.out(2)" }] }, 7.8);
+    tl.to(["#twist-sam-armL", "#twist-sam-armR"], { rotation: (i) => (i ? -150 : 150), duration: 0.3, ease: "back.out(1.6)" }, 7.95);
+    blink("twist-t", 8.6);
+    
+    window.__timelines["twist"] = tl;
+  </script>
+</template>

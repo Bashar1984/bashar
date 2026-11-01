@@ -1,0 +1,131 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Nunito", sans-serif; }
+.chr { position: absolute; width: 240px; height: 540px; }
+.leg { position: absolute; top: 380px; width: 36px; height: 150px; border-radius: 18px; transform-origin: 18px 10px; }
+.shoe { position: absolute; bottom: -6px; left: -6px; width: 52px; height: 22px; border-radius: 12px; background: #121317; }
+.body { position: absolute; left: 48px; top: 215px; width: 144px; height: 195px; border-radius: 64px 64px 26px 26px; }
+.arm { position: absolute; top: 232px; width: 30px; height: 150px; border-radius: 15px; transform-origin: 15px 12px; }
+.hand { position: absolute; bottom: -10px; left: -3px; width: 36px; height: 36px; border-radius: 50%; }
+.head { position: absolute; left: 45px; top: 58px; width: 150px; height: 150px; border-radius: 50%; transform-origin: 75px 150px; }
+.hair { position: absolute; left: -6px; top: -10px; width: 162px; height: 78px; border-radius: 80px 80px 24px 24px; }
+.eye { position: absolute; top: 70px; width: 16px; height: 22px; border-radius: 50%; background: #121317; transform-origin: 8px 11px; }
+.mouth { position: absolute; left: 45px; top: 100px; overflow: visible; }
+.sweat { position: absolute; left: 150px; top: 40px; width: 18px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #5FB3FF; opacity: 0; }
+.narr { position: absolute; left: 192px; font-weight: 900; font-size: 54px; line-height: 1.15; color: #121317; white-space: nowrap; }
+.narr span { display: inline-block; margin-right: 0.24em; opacity: 0; }
+.ck { position: absolute; left: 1640px; top: 80px; width: 168px; height: 168px; border-radius: 50%; background: #FFFFFF; border: 10px solid #121317;
+  display: flex; align-items: center; justify-content: center; font-family: "Archivo Black", sans-serif; font-size: 46px; color: #121317; }
+.bubble { position: absolute; padding: 24px 32px; border-radius: 28px; background: #FFFFFF; font-weight: 800; font-size: 40px; color: #121317;
+  white-space: nowrap; box-shadow: 0 8px 18px rgba(18,19,23,0.15); opacity: 0; }
+.tail { position: absolute; bottom: -24px; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 26px solid #FFFFFF; }
+.bld { position: absolute; bottom: 120px; border-radius: 6px 6px 0 0;
+  background-image: repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,0.55) 22px 44px, transparent 44px 66px),
+                    repeating-linear-gradient(0deg, transparent 0 26px, rgba(0,0,0,0) 26px 52px); }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.6); }
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; }
+.phone { position: absolute; width: 360px; height: 700px; border-radius: 54px; background: #1B1C20; padding: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.25); opacity: 0; }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 44px; overflow: hidden; background: #EEF0F4; }
+
+    #root { background: #9DD3FF; }
+    
+  </style>
+  <div id="root" data-composition-id="outage" data-width="1920" data-height="1080">
+    
+    <div class="bld" style="left:0px;width:260px;height:520px;background-color:#7C8DB5"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:204px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:204px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:204px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:204px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div><div class="win" style="left:204px;top:256px"></div><div class="win" style="left:20px;top:314px"></div><div class="win" style="left:66px;top:314px"></div><div class="win" style="left:112px;top:314px"></div><div class="win" style="left:158px;top:314px"></div><div class="win" style="left:204px;top:314px"></div><div class="win" style="left:20px;top:372px"></div><div class="win" style="left:66px;top:372px"></div><div class="win" style="left:112px;top:372px"></div><div class="win" style="left:158px;top:372px"></div><div class="win" style="left:204px;top:372px"></div><div class="win" style="left:20px;top:430px"></div><div class="win" style="left:66px;top:430px"></div><div class="win" style="left:112px;top:430px"></div><div class="win" style="left:158px;top:430px"></div><div class="win" style="left:204px;top:430px"></div></div><div class="bld" style="left:290px;width:220px;height:380px;background-color:#7C8DB5"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div></div><div class="bld" style="left:540px;width:300px;height:600px;background-color:#7C8DB5"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:204px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:204px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:204px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:204px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div><div class="win" style="left:204px;top:256px"></div><div class="win" style="left:20px;top:314px"></div><div class="win" style="left:66px;top:314px"></div><div class="win" style="left:112px;top:314px"></div><div class="win" style="left:158px;top:314px"></div><div class="win" style="left:204px;top:314px"></div><div class="win" style="left:20px;top:372px"></div><div class="win" style="left:66px;top:372px"></div><div class="win" style="left:112px;top:372px"></div><div class="win" style="left:158px;top:372px"></div><div class="win" style="left:204px;top:372px"></div><div class="win" style="left:20px;top:430px"></div><div class="win" style="left:66px;top:430px"></div><div class="win" style="left:112px;top:430px"></div><div class="win" style="left:158px;top:430px"></div><div class="win" style="left:204px;top:430px"></div><div class="win" style="left:20px;top:488px"></div><div class="win" style="left:66px;top:488px"></div><div class="win" style="left:112px;top:488px"></div><div class="win" style="left:158px;top:488px"></div><div class="win" style="left:204px;top:488px"></div></div><div class="bld" style="left:1440px;width:240px;height:460px;background-color:#7C8DB5"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div><div class="win" style="left:20px;top:314px"></div><div class="win" style="left:66px;top:314px"></div><div class="win" style="left:112px;top:314px"></div><div class="win" style="left:158px;top:314px"></div><div class="win" style="left:20px;top:372px"></div><div class="win" style="left:66px;top:372px"></div><div class="win" style="left:112px;top:372px"></div><div class="win" style="left:158px;top:372px"></div></div><div class="bld" style="left:1700px;width:260px;height:560px;background-color:#7C8DB5"><div class="win" style="left:20px;top:24px"></div><div class="win" style="left:66px;top:24px"></div><div class="win" style="left:112px;top:24px"></div><div class="win" style="left:158px;top:24px"></div><div class="win" style="left:204px;top:24px"></div><div class="win" style="left:20px;top:82px"></div><div class="win" style="left:66px;top:82px"></div><div class="win" style="left:112px;top:82px"></div><div class="win" style="left:158px;top:82px"></div><div class="win" style="left:204px;top:82px"></div><div class="win" style="left:20px;top:140px"></div><div class="win" style="left:66px;top:140px"></div><div class="win" style="left:112px;top:140px"></div><div class="win" style="left:158px;top:140px"></div><div class="win" style="left:204px;top:140px"></div><div class="win" style="left:20px;top:198px"></div><div class="win" style="left:66px;top:198px"></div><div class="win" style="left:112px;top:198px"></div><div class="win" style="left:158px;top:198px"></div><div class="win" style="left:204px;top:198px"></div><div class="win" style="left:20px;top:256px"></div><div class="win" style="left:66px;top:256px"></div><div class="win" style="left:112px;top:256px"></div><div class="win" style="left:158px;top:256px"></div><div class="win" style="left:204px;top:256px"></div><div class="win" style="left:20px;top:314px"></div><div class="win" style="left:66px;top:314px"></div><div class="win" style="left:112px;top:314px"></div><div class="win" style="left:158px;top:314px"></div><div class="win" style="left:204px;top:314px"></div><div class="win" style="left:20px;top:372px"></div><div class="win" style="left:66px;top:372px"></div><div class="win" style="left:112px;top:372px"></div><div class="win" style="left:158px;top:372px"></div><div class="win" style="left:204px;top:372px"></div><div class="win" style="left:20px;top:430px"></div><div class="win" style="left:66px;top:430px"></div><div class="win" style="left:112px;top:430px"></div><div class="win" style="left:158px;top:430px"></div><div class="win" style="left:204px;top:430px"></div></div>
+    <div class="ground" style="background:#B8C2D6"></div>
+    
+      <div id="outage-sam" class="chr" style="left:560px;top:420px"><div id="outage-sam-bob" style="position:absolute;inset:0">
+        <div id="outage-sam-legL" class="leg" style="left:78px;background:#26282E"><div class="shoe"></div></div>
+        <div id="outage-sam-legR" class="leg" style="left:126px;background:#26282E"><div class="shoe"></div></div>
+        <div id="outage-sam-armL" class="arm" style="left:30px;background:#2348F2"><div class="hand" style="background:#D99A6C"></div></div>
+        <div id="outage-sam-armR" class="arm" style="left:180px;background:#2348F2"><div class="hand" style="background:#D99A6C"></div></div>
+        <div id="outage-sam-body" class="body" style="background:#2348F2"></div>
+        <div id="outage-sam-head" class="head" style="background:#D99A6C">
+          <div class="hair" style="background:#2B1E1A"></div>
+          <div id="outage-sam-eyeL" class="eye" style="left:44px"></div><div id="outage-sam-eyeR" class="eye" style="left:90px"></div>
+          <svg class="mouth" width="60" height="40" viewBox="0 0 60 40"><path id="outage-sam-m-smile" d="M8 6 Q30 28 52 6" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="1"/><path id="outage-sam-m-flat" d="M14 14 L46 14" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><ellipse id="outage-sam-m-o" cx="30" cy="16" rx="11" ry="14" fill="#121317" opacity="0"/><path id="outage-sam-m-frown" d="M10 24 Q30 4 50 24" fill="none" stroke="#121317" stroke-width="6" stroke-linecap="round" opacity="0"/><path id="outage-sam-m-grin" d="M4 4 Q30 40 56 4 Z" fill="#121317" opacity="0"/></svg>
+          <div id="outage-sam-sweat" class="sweat"></div>
+        </div>
+      </div></div>
+    <div id="outage-ph" class="phone" style="left:1060px;top:250px"><div class="screen">
+      <svg width="336" height="676" viewBox="0 0 336 676"><g stroke="#FFFFFF" stroke-width="22"><line x1="0" y1="200" x2="336" y2="200"/><line x1="0" y1="430" x2="336" y2="430"/><line x1="90" y1="0" x2="90" y2="676"/><line x1="250" y1="0" x2="250" y2="676"/></g>
+        <polyline id="outage-route" points="90,640 90,430 250,430 250,120" fill="none" stroke="#2348F2" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="90" cy="560" r="16" fill="#FFFFFF" stroke="#121317" stroke-width="6"/></svg>
+      <div style="position:absolute;left:18px;top:28px;right:18px;padding:16px 20px;border-radius:20px;background:#FFFFFF;font-weight:800;font-size:28px;color:#121317">
+        <span id="outage-ok">Tower 12, 22 min</span><span id="outage-bad" style="position:absolute;left:20px;color:#F2553C;opacity:0">Live routes unavailable</span></div>
+    </div>
+    <div id="outage-n0" class="narr" style="top:118px"><span>At</span><span>8:12,</span><span>every</span><span>AI</span><span>helper</span><span>went</span><span>quiet.</span></div>
+    <div id="outage-n1" class="narr" style="top:188px"><span>The</span><span>map</span><span>just</span><span>stopped.</span></div>
+    <div id="outage-ck-box" class="ck" style=""><div id="outage-ck">8:10</div></div>
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const $ = (p, part) => "#" + p + "-" + part;
+function mood(p, t, to, from) {
+  tl.to($(p, "m-" + from), { opacity: 0, duration: 0.06 }, t);
+  tl.to($(p, "m-" + to), { opacity: 1, duration: 0.06 }, t);
+  tl.to($(p, "head"), { scaleY: 0.9, scaleX: 1.05, duration: 0.08, ease: "power2.in" }, t - 0.08);
+  tl.to($(p, "head"), { scaleY: 1, scaleX: 1, duration: 0.35, ease: "back.out(2.4)" }, t);
+}
+function blink(p, t) {
+  tl.to([$(p, "eyeL"), $(p, "eyeR")], { scaleY: 0.1, duration: 0.06 }, t);
+  tl.to([$(p, "eyeL"), $(p, "eyeR")], { scaleY: 1, duration: 0.08 }, t + 0.07);
+}
+function stride(p, t0, dur, amp, step) {
+  const n = Math.max(2, Math.round(dur / step));
+  const kl = [], kr = [], al = [], ar = [];
+  for (let i = 0; i < n; i++) {
+    const s = i % 2 ? 1 : -1;
+    kl.push({ rotation: amp * s, duration: step, ease: "sine.inOut" });
+    kr.push({ rotation: -amp * s, duration: step, ease: "sine.inOut" });
+    al.push({ rotation: -amp * 0.85 * s, duration: step, ease: "sine.inOut" });
+    ar.push({ rotation: amp * 0.85 * s, duration: step, ease: "sine.inOut" });
+  }
+  [kl, kr, al, ar].forEach((k) => k.push({ rotation: 0, duration: 0.18, ease: "power2.out" }));
+  tl.to($(p, "legL"), { keyframes: kl }, t0);
+  tl.to($(p, "legR"), { keyframes: kr }, t0);
+  tl.to($(p, "armL"), { keyframes: al }, t0 + 0.05);
+  tl.to($(p, "armR"), { keyframes: ar }, t0 + 0.05);
+  const bob = [];
+  for (let i = 0; i < n; i++) bob.push({ y: i % 2 ? -10 : 0, duration: step, ease: "sine.inOut" });
+  bob.push({ y: 0, duration: 0.18 });
+  tl.to($(p, "bob"), { keyframes: bob }, t0);
+}
+function narrate(id, t) {
+  tl.fromTo("#" + id + " span", { opacity: 0, filter: "blur(5px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.08, ease: "power2.out" }, t);
+}
+function clock(id, t0, dur, m0, m1) {
+  const el = document.querySelector("#" + id), box = document.querySelector("#" + id + "-box"), o = { m: m0 };
+  const paint = () => {
+    const m = Math.floor(o.m), h = m >= 60 ? 9 : 8, mm = m >= 60 ? m - 60 : m;
+    el.textContent = h + ":" + String(mm).padStart(2, "0");
+    box.style.background = m >= 45 ? "#F2553C" : "#FFFFFF";
+    el.style.color = m >= 45 ? "#FFFFFF" : "#121317";
+  };
+  paint();
+  tl.fromTo(o, { m: m0 }, { m: m1, duration: dur, ease: "none", onUpdate: paint }, t0);
+}
+function glitch(sel, t) {
+  tl.to(sel, { keyframes: [{ x: 14, duration: 0.04 }, { x: -16, duration: 0.05 }, { x: 8, duration: 0.04 }, { x: 0, duration: 0.06 }] }, t);
+}
+
+
+    clock("outage-ck", 0, 7, 10, 16);
+    tl.to("#outage-sam-armR", { rotation: -60, duration: 0.4, ease: "power2.out" }, 0.3);
+    tl.fromTo("#outage-ph", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 0.5);
+    blink("outage-sam", 1.6);
+    // the outage
+    glitch("#outage-ph", 3.0);
+    tl.to("#outage-route", { attr: { stroke: "#A9AEB8" }, duration: 0.12 }, 3.05);
+    tl.to("#outage-ok", { opacity: 0, duration: 0.05 }, 3.08);
+    tl.to("#outage-bad", { opacity: 1, duration: 0.08 }, 3.12);
+    narrate("outage-n0", 3.4);
+    mood("outage-sam", 3.6, "flat", "smile");
+    tl.to("#outage-sam-head", { rotation: 8, duration: 0.4, ease: "power2.inOut" }, 3.7);
+    narrate("outage-n1", 5.0);
+    blink("outage-sam", 5.6);
+    
+    window.__timelines["outage"] = tl;
+  </script>
+</template>
