@@ -54,3 +54,13 @@ A rendered copy is included as `vox_sleep.mp4`.
 python3 vox_ai_video.py            # -> vox_ai.mp4 (45 s, 1920x1080)
 python3 vox_ai_video.py --preview 10.5
 ```
+
+## Third video: Arabic (Egyptian) explainer on fear of AI
+
+`vox_ar_video.py` renders a 2-minute right-to-left explainer from the Egyptian-Arabic script, with the narration shown as on-screen captions. Arabic fonts (Cairo and Noto Kufi Arabic, SIL Open Font License) are in `fonts/`. Arabic shaping needs Pillow built with libraqm.
+
+```bash
+python3 vox_ar_video.py                         # -> vox_ar_fear.mp4 (2:08, 1920x1080)
+python3 vox_ar_video.py --voice narration.mp3   # mix your voiceover over the music
+python3 vox_ar_video.py --captions              # print caption timings to record against
+```

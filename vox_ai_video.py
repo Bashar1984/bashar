@@ -359,12 +359,16 @@ def render_frame(i):
 def make_audio(path):
     chords = [[57, 60, 64], [52, 55, 59], [53, 57, 60], [50, 53, 57]]  # Am Em F Dm
     v.make_music(path, TOTAL, chords=chords, starts=STARTS[1:], mute=MUTES)
+    add_buzz(path, [g0 for g0, _ in GLITCHES])
+
+
+def add_buzz(path, times):
+    """Mix an electric "power-down" buzz into a mono WAV at each time (seconds)."""
     with wave.open(path, "rb") as w:
         sr = w.getframerate()
         pcm = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32767
     pcm = pcm.copy()
-    # electric "power-down" buzz at each glitch
-    for g0, _ in GLITCHES:
+    for g0 in times:
         n = int(0.7 * sr)
         tt = np.arange(n) / sr
         freq = 180 * np.exp(-tt * 3) + 40
