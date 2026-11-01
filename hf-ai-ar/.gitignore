@@ -1,0 +1,5 @@
+.hyperframes/
+node_modules/
+work-*/
+.*.hf-transaction-*/
+*.mp4.tmp

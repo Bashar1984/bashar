@@ -1,0 +1,69 @@
+<template>
+  <style>
+@font-face { font-family: "Cairo"; src: url("assets/fonts/Cairo.ttf") format("truetype"); font-weight: 200 1000; }
+@font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf") format("truetype"); font-weight: 100 900; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Cairo", sans-serif; direction: rtl; }
+.cap { position: absolute; left: 50%; bottom: 70px; transform: translateX(-50%); width: max-content; max-width: 1500px; padding: 18px 40px; border-radius: 20px;
+  background: rgba(255,255,255,0.94); color: #121317; font-weight: 800; font-size: 44px; line-height: 1.45; text-align: center; opacity: 0;
+  box-shadow: 0 8px 20px rgba(18,19,23,0.12); }
+.phone { position: absolute; width: 440px; height: 820px; border-radius: 66px; background: #1B1C20; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 54px; overflow: hidden; background: #EEF0F4; direction: rtl; }
+.lbl { position: absolute; font-weight: 800; font-size: 34px; color: #121317; white-space: nowrap; }
+.tick { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #34A853; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.cross { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #F2553C; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.card { position: absolute; border-radius: 26px; background: #FFFFFF; box-shadow: 0 16px 34px rgba(18,19,23,0.16); }
+.bld { position: absolute; bottom: 0; border-radius: 6px 6px 0 0; }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.65); }
+
+    #root { background: #1E6B52; }
+  </style>
+  <div id="root" data-composition-id="apps" data-width="1920" data-height="1080">
+    
+    <div class="card" style="left:80px;top:120px;width:760px;height:600px;background:#1B1C20">
+      <div style="position:absolute;right:40px;top:28px;font-weight:900;font-size:40px;color:#FFFFFF">مقترح لك</div></div>
+    <div id="apps-t0" style="position:absolute;left:110px;top:200px;width:210px;height:150px;border-radius:14px;background:#F28C28"><div id="apps-b0" style="position:absolute;right:8px;top:8px;padding:2px 12px;border-radius:10px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:28px">ليك</div></div><div id="apps-t1" style="position:absolute;left:340px;top:200px;width:210px;height:150px;border-radius:14px;background:#8A2E3B"><div id="apps-b1" style="position:absolute;right:8px;top:8px;padding:2px 12px;border-radius:10px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:28px">ليك</div></div><div id="apps-t2" style="position:absolute;left:570px;top:200px;width:210px;height:150px;border-radius:14px;background:#2348F2"><div id="apps-b2" style="position:absolute;right:8px;top:8px;padding:2px 12px;border-radius:10px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:28px">ليك</div></div><div id="apps-t3" style="position:absolute;left:110px;top:370px;width:210px;height:150px;border-radius:14px;background:#1E6B52"><div id="apps-b3" style="position:absolute;right:8px;top:8px;padding:2px 12px;border-radius:10px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:28px">ليك</div></div><div id="apps-t4" style="position:absolute;left:340px;top:370px;width:210px;height:150px;border-radius:14px;background:#5E3D6B"><div id="apps-b4" style="position:absolute;right:8px;top:8px;padding:2px 12px;border-radius:10px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:28px">ليك</div></div><div id="apps-t5" style="position:absolute;left:570px;top:370px;width:210px;height:150px;border-radius:14px;background:#F2553C"><div id="apps-b5" style="position:absolute;right:8px;top:8px;padding:2px 12px;border-radius:10px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:28px">ليك</div></div>
+    <div class="card" style="left:1060px;top:120px;width:700px;height:600px">
+      <div style="position:absolute;right:36px;top:28px;font-weight:900;font-size:40px;color:#121317">خدمة العملاء</div>
+      <div id="apps-bot" style="position:absolute;right:36px;top:130px;padding:20px 26px;border-radius:22px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:32px">أهلًا! أقدر أساعدك إزاي؟</div>
+      <div id="apps-q" style="position:absolute;left:0;right:0;top:300px;text-align:center;font-weight:800;font-size:34px;color:#5A5F6B;opacity:0">دورك في الانتظار</div>
+      <div id="apps-n" style="position:absolute;left:0;right:0;top:350px;text-align:center;font-family:'Archivo Black',sans-serif;font-size:150px;color:#121317;opacity:0;direction:ltr">57</div></div>
+    <div id="apps-cap0" class="cap">التطبيق اللي كان بيختارلك تتفرج على إيه، بقى بيعرض كل حاجة بنفس الترتيب الممل.</div>
+    <div id="apps-cap1" class="cap">ولو كلمت خدمة العملاء، مفيش شات بوت يرد… لازم تستنى دورك مع إنسان.</div>
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const D = 12.25;
+const at = (f) => f * D;
+function pop(sel, f, s0) {
+  tl.fromTo(sel, { opacity: 0, scale: s0 || 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, at(f));
+}
+function show(sel, f, dur) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: dur || 0.3, ease: "power2.out" }, at(f)); }
+function rise(sel, f) { tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, at(f)); }
+function aiOff(sel, f) {  // the teal AI layer greys out and fades
+  tl.to(sel, { keyframes: [{ x: 8, duration: 0.04 }, { x: -10, duration: 0.05 }, { x: 0, duration: 0.05 }] }, at(f));
+  tl.to(sel, { filter: "grayscale(1)", opacity: 0.25, duration: 0.5, ease: "power2.out" }, at(f) + 0.12);
+}
+function captions(prefix, spans) {  // spans: [[startFrac, endFrac], ...]
+  spans.forEach(([a, b], i) => {
+    const id = "#" + prefix + "-cap" + i;
+    if (a === 0) tl.set(id, { opacity: 1 }, 0);
+    else tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, at(a));
+    if (b < 0.999) tl.to(id, { opacity: 0, duration: 0.18, ease: "power2.in" }, at(b) - 0.18);
+  });
+}
+
+
+    for (let i = 0; i < 6; i++) aiOff("#apps-b" + i, 0.18 + i * 0.03);
+    tl.to(["#apps-t0", "#apps-t1", "#apps-t2", "#apps-t3", "#apps-t4", "#apps-t5"], { backgroundColor: "#6B6F7A", duration: 0.6, stagger: 0.05 }, at(0.3));
+    aiOff("#apps-bot", 0.58);
+    show("#apps-q", 0.66); show("#apps-n", 0.68);
+    const n = { v: 57 }, el = document.querySelector("#apps-n");
+    tl.fromTo(n, { v: 57 }, { v: 54, duration: D * 0.28, ease: "none", onUpdate: () => { el.textContent = String(Math.round(n.v)); } }, at(0.7));
+    
+    captions("apps", [[0.03, 0.5226], [0.5226, 1.0]]);
+    window.__timelines["apps"] = tl;
+  </script>
+</template>

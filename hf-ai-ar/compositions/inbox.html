@@ -1,0 +1,67 @@
+<template>
+  <style>
+@font-face { font-family: "Cairo"; src: url("assets/fonts/Cairo.ttf") format("truetype"); font-weight: 200 1000; }
+@font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf") format("truetype"); font-weight: 100 900; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Cairo", sans-serif; direction: rtl; }
+.cap { position: absolute; left: 50%; bottom: 70px; transform: translateX(-50%); width: max-content; max-width: 1500px; padding: 18px 40px; border-radius: 20px;
+  background: rgba(255,255,255,0.94); color: #121317; font-weight: 800; font-size: 44px; line-height: 1.45; text-align: center; opacity: 0;
+  box-shadow: 0 8px 20px rgba(18,19,23,0.12); }
+.phone { position: absolute; width: 440px; height: 820px; border-radius: 66px; background: #1B1C20; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 54px; overflow: hidden; background: #EEF0F4; direction: rtl; }
+.lbl { position: absolute; font-weight: 800; font-size: 34px; color: #121317; white-space: nowrap; }
+.tick { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #34A853; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.cross { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #F2553C; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.card { position: absolute; border-radius: 26px; background: #FFFFFF; box-shadow: 0 16px 34px rgba(18,19,23,0.16); }
+.bld { position: absolute; bottom: 0; border-radius: 6px 6px 0 0; }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.65); }
+
+    #root { background: #F2553C; }
+  </style>
+  <div id="root" data-composition-id="inbox" data-width="1920" data-height="1080">
+    
+    <div class="phone" style="left:1180px;top:50px"><div class="screen" style="background:#FFFFFF">
+      <div style="position:absolute;right:34px;top:60px;font-weight:900;font-size:48px;color:#121317">البريد</div>
+      <div id="inbox-shield" style="position:absolute;left:30px;top:56px;width:120px;height:58px;border-radius:16px;background:#00897B;color:#FFFFFF;font-weight:900;font-size:28px;display:flex;align-items:center;justify-content:center">فلتر</div>
+      <div style="position:absolute;left:0;right:0;top:150px;bottom:0;overflow:hidden"><div id="inbox-r0" style="position:absolute;left:0;right:0;top:0px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">مبروك! كسبت جايزة</div><div id="inbox-r1" style="position:absolute;left:0;right:0;top:92px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">شحنتك متوقفة</div><div id="inbox-r2" style="position:absolute;left:0;right:0;top:184px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">أكّد حسابك فورًا</div><div id="inbox-r3" style="position:absolute;left:0;right:0;top:276px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">ضاعف فلوسك في يوم</div><div id="inbox-r4" style="position:absolute;left:0;right:0;top:368px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">استرد ضريبتك دلوقتي</div><div id="inbox-r5" style="position:absolute;left:0;right:0;top:460px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">آخر فرصة!!!</div><div id="inbox-r6" style="position:absolute;left:0;right:0;top:552px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">حسابك اتقفل</div><div id="inbox-r7" style="position:absolute;left:0;right:0;top:644px;height:92px;padding:16px 30px;border-bottom:2px solid #ECEEF2;background:#FFFFFF;font-weight:800;font-size:30px;color:#121317;opacity:0">عرض النهارده بس</div></div>
+    </div></div>
+    <div id="inbox-big" style="position:absolute;left:300px;top:250px;width:520px;height:380px;border-radius:30px;background:#FFFFFF;box-shadow:0 20px 40px rgba(0,0,0,0.2);opacity:0">
+      <div style="position:absolute;left:0;right:0;top:0;height:120px;border-radius:30px 30px 0 0;background:#F2553C"></div>
+      <div style="position:absolute;left:150px;top:30px;width:220px;height:150px;border-left:110px solid transparent;border-right:110px solid transparent;border-top:120px solid #FFFFFF;width:0;height:0"></div>
+      <div style="position:absolute;right:40px;bottom:50px;font-weight:900;font-size:60px;color:#F2553C">نصب؟</div></div>
+    <div id="inbox-cap0" class="cap">وهنا تبدأ الاكتشافات الصغيرة.</div>
+    <div id="inbox-cap1" class="cap">الإيميل بتاعك اتملى رسايل نصب، كان فيه فلتر بيصطادها من غير ما تحس.</div>
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const D = 8.08;
+const at = (f) => f * D;
+function pop(sel, f, s0) {
+  tl.fromTo(sel, { opacity: 0, scale: s0 || 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, at(f));
+}
+function show(sel, f, dur) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: dur || 0.3, ease: "power2.out" }, at(f)); }
+function rise(sel, f) { tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, at(f)); }
+function aiOff(sel, f) {  // the teal AI layer greys out and fades
+  tl.to(sel, { keyframes: [{ x: 8, duration: 0.04 }, { x: -10, duration: 0.05 }, { x: 0, duration: 0.05 }] }, at(f));
+  tl.to(sel, { filter: "grayscale(1)", opacity: 0.25, duration: 0.5, ease: "power2.out" }, at(f) + 0.12);
+}
+function captions(prefix, spans) {  // spans: [[startFrac, endFrac], ...]
+  spans.forEach(([a, b], i) => {
+    const id = "#" + prefix + "-cap" + i;
+    if (a === 0) tl.set(id, { opacity: 1 }, 0);
+    else tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, at(a));
+    if (b < 0.999) tl.to(id, { opacity: 0, duration: 0.18, ease: "power2.in" }, at(b) - 0.18);
+  });
+}
+
+
+    aiOff("#inbox-shield", 0.3);
+    for (let i = 0; i < 8; i++) tl.fromTo("#inbox-r" + i, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.25, ease: "expo.out" }, at(0.36 + i * 0.06));
+    pop("#inbox-big", 0.5);
+    
+    captions("inbox", [[0.03, 0.2535], [0.2535, 1.0]]);
+    window.__timelines["inbox"] = tl;
+  </script>
+</template>

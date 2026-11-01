@@ -1,0 +1,74 @@
+<template>
+  <style>
+@font-face { font-family: "Cairo"; src: url("assets/fonts/Cairo.ttf") format("truetype"); font-weight: 200 1000; }
+@font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf") format("truetype"); font-weight: 100 900; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Cairo", sans-serif; direction: rtl; }
+.cap { position: absolute; left: 50%; bottom: 70px; transform: translateX(-50%); width: max-content; max-width: 1500px; padding: 18px 40px; border-radius: 20px;
+  background: rgba(255,255,255,0.94); color: #121317; font-weight: 800; font-size: 44px; line-height: 1.45; text-align: center; opacity: 0;
+  box-shadow: 0 8px 20px rgba(18,19,23,0.12); }
+.phone { position: absolute; width: 440px; height: 820px; border-radius: 66px; background: #1B1C20; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 54px; overflow: hidden; background: #EEF0F4; direction: rtl; }
+.lbl { position: absolute; font-weight: 800; font-size: 34px; color: #121317; white-space: nowrap; }
+.tick { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #34A853; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.cross { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #F2553C; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.card { position: absolute; border-radius: 26px; background: #FFFFFF; box-shadow: 0 16px 34px rgba(18,19,23,0.16); }
+.bld { position: absolute; bottom: 0; border-radius: 6px 6px 0 0; }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.65); }
+
+    #root { background: #121317; }
+  </style>
+  <div id="root" data-composition-id="rules" data-width="1920" data-height="1080">
+    
+    <div style="position:absolute;left:960px;top:0;width:960px;height:1080px;background:#EDEFF4"></div>
+    <div class="lbl" style="right:220px;top:150px;font-size:54px;font-family:'Noto Kufi Arabic';font-weight:900">لسه شغال</div>
+    <div id="rules-a" class="lbl" style="right:330px;top:300px">البرامج العادية</div><div id="rules-ta" class="tick" style="right:220px;top:290px">✓</div>
+    <div id="rules-b" class="lbl" style="right:330px;top:420px">الآلات</div><div id="rules-tb" class="tick" style="right:220px;top:410px">✓</div>
+    <div id="rules-c" class="lbl" data-hold style="right:330px;top:540px">البشر</div><div id="rules-tc" class="tick" style="right:220px;top:530px">✓</div>
+    <div class="lbl" style="right:1180px;top:150px;font-size:54px;font-family:'Noto Kufi Arabic';font-weight:900;color:#FFFFFF">وقف</div>
+    <svg id="rules-brain" width="420" height="320" viewBox="0 0 420 320" style="position:absolute;left:290px;top:270px">
+      <g stroke="#00897B" stroke-width="8"><line x1="60" y1="60" x2="210" y2="160"/><line x1="60" y1="260" x2="210" y2="160"/><line x1="210" y1="160" x2="360" y2="60"/>
+        <line x1="210" y1="160" x2="360" y2="260"/><line x1="60" y1="60" x2="60" y2="260"/><line x1="360" y1="60" x2="360" y2="260"/></g>
+      <g fill="#00897B"><circle cx="60" cy="60" r="30"/><circle cx="60" cy="260" r="30"/><circle cx="210" cy="160" r="40"/><circle cx="360" cy="60" r="30"/><circle cx="360" cy="260" r="30"/></g>
+      <circle id="rules-pulse" cx="60" cy="60" r="14" fill="#FFFFFF"/></svg>
+    <div id="rules-x" class="cross" style="left:660px;top:250px">✕</div>
+    <div class="lbl" data-hold style="right:1190px;top:650px;color:#FFFFFF;font-size:38px">بيتعلم · بيخمّن · بيقرر</div>
+    <div id="rules-cap0" class="cap">النهارده الصبح، كل أنظمة الذكاء الاصطناعي في العالم وقفت. من غير إنذار، ومن غير تفسير.</div>
+    <div id="rules-cap1" class="cap">البرامج العادية شغالة، والآلات شغالة، والبشر شغالين.</div>
+    <div id="rules-cap2" class="cap">اللي وقف بس هو الحاجة اللي كانت بتتعلم، وبتخمّن، وبتقرر بالنيابة عننا.</div>
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const D = 15.17;
+const at = (f) => f * D;
+function pop(sel, f, s0) {
+  tl.fromTo(sel, { opacity: 0, scale: s0 || 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, at(f));
+}
+function show(sel, f, dur) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: dur || 0.3, ease: "power2.out" }, at(f)); }
+function rise(sel, f) { tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, at(f)); }
+function aiOff(sel, f) {  // the teal AI layer greys out and fades
+  tl.to(sel, { keyframes: [{ x: 8, duration: 0.04 }, { x: -10, duration: 0.05 }, { x: 0, duration: 0.05 }] }, at(f));
+  tl.to(sel, { filter: "grayscale(1)", opacity: 0.25, duration: 0.5, ease: "power2.out" }, at(f) + 0.12);
+}
+function captions(prefix, spans) {  // spans: [[startFrac, endFrac], ...]
+  spans.forEach(([a, b], i) => {
+    const id = "#" + prefix + "-cap" + i;
+    if (a === 0) tl.set(id, { opacity: 1 }, 0);
+    else tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, at(a));
+    if (b < 0.999) tl.to(id, { opacity: 0, duration: 0.18, ease: "power2.in" }, at(b) - 0.18);
+  });
+}
+
+
+    rise("#rules-brain", 0.05);
+    tl.fromTo("#rules-pulse", { attr: { cx: 60, cy: 60 } }, { keyframes: [{ attr: { cx: 210, cy: 160 }, duration: 0.5 }, { attr: { cx: 360, cy: 60 }, duration: 0.5 },
+      { attr: { cx: 360, cy: 260 }, duration: 0.5 }, { attr: { cx: 210, cy: 160 }, duration: 0.5 }, { attr: { cx: 60, cy: 260 }, duration: 0.5 }, { attr: { cx: 60, cy: 60 }, duration: 0.5 }], ease: "none" }, at(0.08));
+    aiOff("#rules-brain", 0.3); pop("#rules-x", 0.34);
+    rise("#rules-a", 0.5); pop("#rules-ta", 0.53); rise("#rules-b", 0.58); pop("#rules-tb", 0.61); rise("#rules-c", 0.66); pop("#rules-tc", 0.69);
+    
+    captions("rules", [[0.03, 0.4491], [0.4491, 0.6447], [0.6447, 1.0]]);
+    window.__timelines["rules"] = tl;
+  </script>
+</template>

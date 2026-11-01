@@ -1,0 +1,67 @@
+<template>
+  <style>
+@font-face { font-family: "Cairo"; src: url("assets/fonts/Cairo.ttf") format("truetype"); font-weight: 200 1000; }
+@font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf") format("truetype"); font-weight: 100 900; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Cairo", sans-serif; direction: rtl; }
+.cap { position: absolute; left: 50%; bottom: 70px; transform: translateX(-50%); width: max-content; max-width: 1500px; padding: 18px 40px; border-radius: 20px;
+  background: rgba(255,255,255,0.94); color: #121317; font-weight: 800; font-size: 44px; line-height: 1.45; text-align: center; opacity: 0;
+  box-shadow: 0 8px 20px rgba(18,19,23,0.12); }
+.phone { position: absolute; width: 440px; height: 820px; border-radius: 66px; background: #1B1C20; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 54px; overflow: hidden; background: #EEF0F4; direction: rtl; }
+.lbl { position: absolute; font-weight: 800; font-size: 34px; color: #121317; white-space: nowrap; }
+.tick { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #34A853; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.cross { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #F2553C; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.card { position: absolute; border-radius: 26px; background: #FFFFFF; box-shadow: 0 16px 34px rgba(18,19,23,0.16); }
+.bld { position: absolute; bottom: 0; border-radius: 6px 6px 0 0; }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.65); }
+
+    #root { background: #FFD9A8; }
+  </style>
+  <div id="root" data-composition-id="lift" data-width="1920" data-height="1080">
+    
+    <div style="position:absolute;left:300px;top:120px;width:420px;height:880px;background:#E3E6EE;border-radius:12px"></div>
+    <div id="lift-car" style="position:absolute;left:360px;top:560px;width:300px;height:340px;border-radius:14px;background:#00897B">
+      <div style="position:absolute;left:146px;top:20px;width:8px;height:300px;background:#FFFFFF"></div></div>
+    <div id="lift-sign" class="card" style="left:330px;top:180px;padding:16px 30px;font-weight:900;font-size:40px;color:#F2553C;opacity:0">عطلان</div>
+    <div style="position:absolute;left:1040px;top:860px;width:70px;height:60px;background:#C8CCD6"></div><div style="position:absolute;left:1110px;top:800px;width:70px;height:120px;background:#C8CCD6"></div><div style="position:absolute;left:1180px;top:740px;width:70px;height:180px;background:#C8CCD6"></div><div style="position:absolute;left:1250px;top:680px;width:70px;height:240px;background:#C8CCD6"></div><div style="position:absolute;left:1320px;top:620px;width:70px;height:300px;background:#C8CCD6"></div><div style="position:absolute;left:1390px;top:560px;width:70px;height:360px;background:#C8CCD6"></div><div style="position:absolute;left:1460px;top:500px;width:70px;height:420px;background:#C8CCD6"></div><div style="position:absolute;left:1530px;top:440px;width:70px;height:480px;background:#C8CCD6"></div><div style="position:absolute;left:1600px;top:380px;width:70px;height:540px;background:#C8CCD6"></div><div style="position:absolute;left:1670px;top:320px;width:70px;height:600px;background:#C8CCD6"></div>
+    <div id="lift-man" style="position:absolute;left:1040px;top:640px;width:90px;height:220px">
+      <div style="position:absolute;left:15px;top:0;width:60px;height:60px;border-radius:50%;background:#121317"></div>
+      <div style="position:absolute;left:0;top:70px;width:90px;height:150px;border-radius:40px 40px 14px 14px;background:#2348F2"></div></div>
+    <div id="lift-cap0" class="cap">يعني الذكاء الاصطناعي ماكانش الأساس اللي البيت واقف عليه… كان أقرب للأسانسير.</div>
+    <div id="lift-cap1" class="cap">تقدر تطلع من غيره، بس هتتعب. وهتكتشف إنك نسيت السلم من زمان.</div>
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const D = 11.0;
+const at = (f) => f * D;
+function pop(sel, f, s0) {
+  tl.fromTo(sel, { opacity: 0, scale: s0 || 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, at(f));
+}
+function show(sel, f, dur) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: dur || 0.3, ease: "power2.out" }, at(f)); }
+function rise(sel, f) { tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, at(f)); }
+function aiOff(sel, f) {  // the teal AI layer greys out and fades
+  tl.to(sel, { keyframes: [{ x: 8, duration: 0.04 }, { x: -10, duration: 0.05 }, { x: 0, duration: 0.05 }] }, at(f));
+  tl.to(sel, { filter: "grayscale(1)", opacity: 0.25, duration: 0.5, ease: "power2.out" }, at(f) + 0.12);
+}
+function captions(prefix, spans) {  // spans: [[startFrac, endFrac], ...]
+  spans.forEach(([a, b], i) => {
+    const id = "#" + prefix + "-cap" + i;
+    if (a === 0) tl.set(id, { opacity: 1 }, 0);
+    else tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, at(a));
+    if (b < 0.999) tl.to(id, { opacity: 0, duration: 0.18, ease: "power2.in" }, at(b) - 0.18);
+  });
+}
+
+
+    aiOff("#lift-car", 0.3); pop("#lift-sign", 0.34);
+    const k = [];
+    for (let i = 0; i < 8; i++) k.push({ x: (i + 1) * 70, y: -(i + 1) * 60, duration: (D * 0.45) / 8, ease: "power1.inOut" });
+    tl.to("#lift-man", { keyframes: k }, at(0.5));
+    
+    captions("lift", [[0.03, 0.505], [0.505, 1.0]]);
+    window.__timelines["lift"] = tl;
+  </script>
+</template>

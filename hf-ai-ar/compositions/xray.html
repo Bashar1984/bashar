@@ -1,0 +1,71 @@
+<template>
+  <style>
+@font-face { font-family: "Cairo"; src: url("assets/fonts/Cairo.ttf") format("truetype"); font-weight: 200 1000; }
+@font-face { font-family: "Noto Kufi Arabic"; src: url("assets/fonts/NotoKufiArabic.ttf") format("truetype"); font-weight: 100 900; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: "Cairo", sans-serif; direction: rtl; }
+.cap { position: absolute; left: 50%; bottom: 70px; transform: translateX(-50%); width: max-content; max-width: 1500px; padding: 18px 40px; border-radius: 20px;
+  background: rgba(255,255,255,0.94); color: #121317; font-weight: 800; font-size: 44px; line-height: 1.45; text-align: center; opacity: 0;
+  box-shadow: 0 8px 20px rgba(18,19,23,0.12); }
+.phone { position: absolute; width: 440px; height: 820px; border-radius: 66px; background: #1B1C20; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 54px; overflow: hidden; background: #EEF0F4; direction: rtl; }
+.lbl { position: absolute; font-weight: 800; font-size: 34px; color: #121317; white-space: nowrap; }
+.tick { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #34A853; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.cross { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: #F2553C; color: #FFFFFF; font-size: 40px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+.card { position: absolute; border-radius: 26px; background: #FFFFFF; box-shadow: 0 16px 34px rgba(18,19,23,0.16); }
+.bld { position: absolute; bottom: 0; border-radius: 6px 6px 0 0; }
+.win { position: absolute; width: 26px; height: 34px; border-radius: 4px; background: rgba(255,255,255,0.65); }
+
+    #root { background: #BFD0FF; }
+  </style>
+  <div id="root" data-composition-id="xray" data-width="1920" data-height="1080">
+    
+    <div class="card" style="left:960px;top:100px;width:620px;height:680px;background:#1B1C20">
+      <svg width="620" height="680" viewBox="0 0 620 680"><g stroke="#DCE4F2" stroke-width="12" fill="none" stroke-linecap="round">
+        <line x1="310" y1="80" x2="310" y2="600"/>
+        <path d="M310 170 C 220 160, 160 200, 150 250"/><path d="M310 170 C 400 160, 460 200, 470 250"/>
+        <path d="M310 250 C 210 240, 140 290, 130 340"/><path d="M310 250 C 410 240, 480 290, 490 340"/>
+        <path d="M310 330 C 210 320, 140 370, 135 420"/><path d="M310 330 C 410 320, 480 370, 485 420"/>
+        <path d="M310 410 C 220 400, 160 440, 160 490"/><path d="M310 410 C 400 400, 460 440, 460 490"/></g>
+        <rect id="xray-ai" x="380" y="270" width="140" height="120" rx="10" fill="none" stroke="#00897B" stroke-width="8"/></svg>
+      <div id="xray-tag" style="position:absolute;right:30px;top:20px;padding:8px 18px;border-radius:12px;background:#00897B;color:#FFFFFF;font-weight:800;font-size:28px">منطقة تحتاج نظرة</div></div>
+    <div id="xray-eye" style="position:absolute;left:360px;top:300px;width:360px;height:200px;opacity:0">
+      <svg width="360" height="200" viewBox="0 0 360 200"><path d="M10 100 Q180 -40 350 100 Q180 240 10 100 Z" fill="#FFFFFF" stroke="#121317" stroke-width="10"/>
+        <circle cx="180" cy="100" r="54" fill="#2348F2"/><circle cx="180" cy="100" r="24" fill="#121317"/></svg></div>
+    <div id="xray-dr" class="lbl" style="left:420px;top:540px;font-size:44px;opacity:0">الدكتور لسه هنا</div>
+    <div id="xray-cap0" class="cap">وفي بعض المستشفيات، البرامج اللي بتساعد الدكاترة يقروا الأشعة هتسكت…</div>
+    <div id="xray-cap1" class="cap">بس الدكتور نفسه لسه موجود، وعينه لسه شغالة.</div>
+  </div>
+  <script>
+const tl = gsap.timeline({ paused: true });
+const D = 8.5;
+const at = (f) => f * D;
+function pop(sel, f, s0) {
+  tl.fromTo(sel, { opacity: 0, scale: s0 || 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, at(f));
+}
+function show(sel, f, dur) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: dur || 0.3, ease: "power2.out" }, at(f)); }
+function rise(sel, f) { tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, at(f)); }
+function aiOff(sel, f) {  // the teal AI layer greys out and fades
+  tl.to(sel, { keyframes: [{ x: 8, duration: 0.04 }, { x: -10, duration: 0.05 }, { x: 0, duration: 0.05 }] }, at(f));
+  tl.to(sel, { filter: "grayscale(1)", opacity: 0.25, duration: 0.5, ease: "power2.out" }, at(f) + 0.12);
+}
+function captions(prefix, spans) {  // spans: [[startFrac, endFrac], ...]
+  spans.forEach(([a, b], i) => {
+    const id = "#" + prefix + "-cap" + i;
+    if (a === 0) tl.set(id, { opacity: 1 }, 0);
+    else tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, at(a));
+    if (b < 0.999) tl.to(id, { opacity: 0, duration: 0.18, ease: "power2.in" }, at(b) - 0.18);
+  });
+}
+
+
+    aiOff("#xray-ai", 0.35); aiOff("#xray-tag", 0.37);
+    pop("#xray-eye", 0.62); show("#xray-dr", 0.7);
+    tl.to("#xray-eye", { x: 40, duration: D * 0.2, ease: "sine.inOut" }, at(0.75));
+    
+    captions("xray", [[0.03, 0.5578], [0.5578, 1.0]]);
+    window.__timelines["xray"] = tl;
+  </script>
+</template>
