@@ -64,3 +64,18 @@ python3 vox_ar_video.py                         # -> vox_ar_fear.mp4 (2:08, 1920
 python3 vox_ar_video.py --voice narration.mp3   # mix your voiceover over the music
 python3 vox_ar_video.py --captions              # print caption timings to record against
 ```
+
+### Adding a recorded voiceover
+
+`vox_ar_voice.py` syncs the Arabic video to a voice recording:
+
+- It cleans up the voice: hum and hiss reduction, a gate for the pauses, EQ, de-essing, compression, and loudness at -14 LUFS.
+- It time-warps the animation so each sentence's scene and caption start when that sentence is spoken.
+- It ducks the music under the voice and adds sound effects (whooshes, glitch buzz, stamp hits, typing, pops, dings, a riser and impacts).
+
+```bash
+python3 vox_ar_voice.py narration.m4a                        # -> vox_ar_fear_voice.mp4
+python3 vox_ar_voice.py narration.m4a --starts starts.json   # 25 sentence start times (s)
+```
+
+Sentence times are found from the pauses in the recording. If one is off, pass corrected times with `--starts`.

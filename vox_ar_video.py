@@ -560,11 +560,16 @@ _tex = None
 
 
 def render_frame(i):
+    return render_at(i / FPS, i)
+
+
+def render_at(t, seed, total=None):
+    """Render the frame at story time t; total sets where the fade-out happens."""
     global _tex
     if _tex is None:
         _tex = v.make_textures()
     vignette, grains = _tex
-    t = i / FPS
+    i = seed
     img = Image.new("RGB", (W * S, H * S), PAPER)
     c = Canvas(img)
     idx = max(k for k, s in enumerate(STARTS) if t >= s)
@@ -584,7 +589,7 @@ def render_frame(i):
         if g0 <= t < g0 + gd:
             p = (t - g0) / gd
             arr = glitch(arr, math.sin(math.pi * p) * (0.6 + 0.4 * ((i * 7919) % 5) / 4), i)
-    fio = min(prog(t, 0, 0.4), prog(TOTAL - t, 0, 0.6))
+    fio = min(prog(t, 0, 0.4), prog(TOTAL - t, 0, 0.6)) if total is None else 1.0
     if fio < 1:
         arr = arr * fio
     return np.clip(arr, 0, 255).astype(np.uint8).tobytes()
