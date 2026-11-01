@@ -535,16 +535,20 @@ def render_frame(i):
 
 # ---------------------------------------------------------------- audio
 
-def make_music(path, seconds, sr=44100):
-    """Soft pad + plucked arpeggio + whooshes on each scene transition."""
+def make_music(path, seconds, sr=44100, chords=None, starts=None, mute=()):
+    """Soft pad + plucked arpeggio + whooshes on each scene transition.
+
+    chords: list of MIDI-note triads (one per 2.4 s bar), starts: transition
+    times for whooshes, mute: (start, end) seconds where the music cuts out.
+    """
     n = int(seconds * sr)
     t = np.arange(n) / sr
     out = np.zeros(n, np.float32)
     note = lambda m: 440.0 * 2 ** ((m - 69) / 12)
-    chords = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]  # Am F C G
+    chords = chords or [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]  # Am F C G
     bar = 2.4
     for k in range(int(seconds / bar) + 1):
-        ch = chords[k % 4]
+        ch = chords[k % len(chords)]
         a, b = int(k * bar * sr), min(n, int((k + 1) * bar * sr + 0.6 * sr))
         if a >= n:
             break
@@ -565,7 +569,7 @@ def make_music(path, seconds, sr=44100):
             f = note(arp[j % 4] + 12)
             out[s0:s1] += 0.035 * np.exp(-ta * 7) * np.sin(2 * np.pi * f * ta) * (1 + 0.3 * np.sin(2 * np.pi * 2 * f * ta))
     rng = np.random.default_rng(3)
-    for s in STARTS[1:]:
+    for s in (STARTS[1:] if starts is None else starts):
         a, b = int((s + 0.0) * sr), min(n, int((s + TRANS + 0.2) * sr))
         L = b - a
         noise = rng.normal(0, 1, L).astype(np.float32)
@@ -573,6 +577,14 @@ def make_music(path, seconds, sr=44100):
         noise = np.convolve(noise, np.ones(24) / 24, mode="same")
         env = np.sin(np.linspace(0, np.pi, L)) ** 2
         out[a:b] += 0.25 * env * noise
+    for m0, m1 in mute:
+        a, b = int(m0 * sr), min(n, int(m1 * sr))
+        ramp = np.ones(b - a, np.float32)
+        k = min(int(0.05 * sr), (b - a) // 2)
+        ramp[k:-k or None] = 0
+        ramp[:k] = np.linspace(1, 0, k)
+        ramp[-k:] = np.linspace(0, 1, k)
+        out[a:b] *= ramp
     fade_n = int(1.5 * sr)
     out[:int(0.5 * sr)] *= np.linspace(0, 1, int(0.5 * sr))
     out[-fade_n:] *= np.linspace(1, 0, fade_n)

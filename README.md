@@ -45,3 +45,12 @@ python3 vox_video.py --preview 12 # save the frame at 12s as a PNG
 
 To change the story, edit the scene functions and the `SCENES` list (each scene is `(function, seconds)`).
 A rendered copy is included as `vox_sleep.mp4`.
+
+## Second video: "What if AI stopped working?"
+
+`vox_ai_video.py` reuses the same drawing helpers. It adds a digital glitch effect, a "power-down" buzz and a music drop-out at the moment everything switches off.
+
+```bash
+python3 vox_ai_video.py            # -> vox_ai.mp4 (45 s, 1920x1080)
+python3 vox_ai_video.py --preview 10.5
+```
