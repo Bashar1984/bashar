@@ -1,0 +1,71 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #EEF0F4; overflow: hidden; font-family: "Outfit", sans-serif; }
+    #mp-world { position: absolute; inset: 0; }
+    #mp-svg { position: absolute; inset: 0; }
+    #mp-chip { position: absolute; left: 192px; top: 120px; height: 96px; padding: 0 36px 0 28px; border-radius: 24px; background: #FFFFFF;
+      box-shadow: 0 10px 24px rgba(18,19,23,0.14); display: flex; align-items: center; gap: 20px; }
+    #mp-spin { width: 40px; height: 40px; border-radius: 50%; border: 6px solid #D5D9E2; border-top-color: #2348F2; opacity: 0; }
+    #mp-pin { width: 22px; height: 22px; border-radius: 50%; background: #2348F2; }
+    .mp-txt { font-weight: 700; font-size: 40px; color: #121317; white-space: nowrap; }
+    #mp-t2, #mp-t3 { position: absolute; left: 96px; opacity: 0; }
+    #mp-t3 { color: #F2553C; left: 70px; }
+    #mp-card { position: absolute; left: 192px; top: 770px; padding: 36px 48px; background: #FFFFFF; border-radius: 8px;
+      box-shadow: 0 16px 36px rgba(18,19,23,0.16); }
+    #mp-title { font-family: "Archivo Black", sans-serif; font-size: 68px; color: #121317; letter-spacing: -0.02em; white-space: nowrap; }
+    #mp-title span { display: inline-block; margin-right: 0.24em; }
+  </style>
+  <div id="root" data-composition-id="map" data-width="1920" data-height="1080">
+    <div id="mp-world">
+      <svg id="mp-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+        <rect x="0" y="640" width="1920" height="120" fill="#CFE0F7" />
+        <rect x="1100" y="380" width="380" height="200" rx="18" fill="#CFE8D5" />
+        <rect x="120" y="120" width="300" height="320" rx="18" fill="#CFE8D5" />
+        <g stroke="#FFFFFF" stroke-width="44" stroke-linecap="round">
+          <line x1="0" y1="300" x2="1920" y2="300" /><line x1="0" y1="560" x2="1920" y2="560" />
+          <line x1="0" y1="880" x2="1920" y2="880" /><line x1="300" y1="0" x2="300" y2="1080" />
+          <line x1="980" y1="0" x2="980" y2="1080" /><line x1="1620" y1="0" x2="1620" y2="1080" />
+        </g>
+        <g stroke="#FFFFFF" stroke-width="22"><line x1="0" y1="430" x2="1920" y2="430" /><line x1="640" y1="0" x2="640" y2="1080" /><line x1="1300" y1="0" x2="1300" y2="1080" /></g>
+        <polyline id="mp-route" points="300,880 300,560 980,560 980,300 1620,300" fill="none" stroke="#2348F2" stroke-width="22" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2560" stroke-dashoffset="2560" />
+        <circle id="mp-car" cx="300" cy="880" r="22" fill="#FFFFFF" stroke="#121317" stroke-width="8" />
+      </svg>
+      <div id="mp-chip">
+        <div id="mp-pin"></div><div id="mp-spin"></div>
+        <div style="position:relative;width:520px;height:50px">
+          <div id="mp-t1" class="mp-txt" style="position:absolute;left:0">12 min, fastest route</div>
+          <div id="mp-t2" class="mp-txt">Rerouting…</div>
+          <div id="mp-t3" class="mp-txt">Live traffic unavailable</div>
+        </div>
+      </div>
+    </div>
+    <div id="mp-card"><div id="mp-title"><span>First,</span><span>the</span><span>map</span><span>stops</span><span>thinking.</span></div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#mp-route", { attr: { "stroke-dashoffset": 2560 } }, { attr: { "stroke-dashoffset": 0 }, duration: 2.2, ease: "power2.inOut" }, 0.2);
+    // car travels along the route until the outage (stops part-way along the 3rd leg)
+    tl.fromTo("#mp-car", { attr: { cx: 300, cy: 880 } }, { attr: { cx: 300, cy: 560 }, duration: 1.1, ease: "none" }, 0.6);
+    tl.fromTo("#mp-car", { attr: { cx: 300, cy: 560 } }, { attr: { cx: 980, cy: 560 }, duration: 1.6, ease: "none", immediateRender: false }, 1.7);
+    tl.fromTo("#mp-car", { attr: { cx: 980, cy: 560 } }, { attr: { cx: 980, cy: 410 }, duration: 0.9, ease: "power1.out", immediateRender: false }, 3.3);
+    // rerouting
+    tl.fromTo("#mp-t1", { opacity: 1 }, { opacity: 0, duration: 0.12 }, 3.0);
+    tl.fromTo("#mp-t2", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.0);
+    tl.fromTo("#mp-pin", { opacity: 1 }, { opacity: 0, duration: 0.1 }, 3.0);
+    tl.fromTo("#mp-spin", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 3.0);
+    tl.fromTo("#mp-spin", { rotation: 0 }, { rotation: 540, duration: 1.2, ease: "none", immediateRender: false }, 3.0);
+    // outage glitch at 4.2
+    tl.to("#mp-world", { keyframes: [{ x: 14, duration: 0.04 }, { x: -18, duration: 0.05 }, { x: 10, duration: 0.04 }, { x: -6, duration: 0.05 }, { x: 0, duration: 0.06 }] }, 4.2);
+    tl.fromTo("#mp-chip", { filter: "drop-shadow(0px 0px 0px rgba(242,85,60,0))" }, { keyframes: [
+      { filter: "drop-shadow(10px 0px 0px rgba(242,85,60,0.9)) drop-shadow(-10px 0px 0px rgba(35,72,242,0.9))", duration: 0.05 },
+      { filter: "drop-shadow(-6px 0px 0px rgba(242,85,60,0.9)) drop-shadow(6px 0px 0px rgba(35,72,242,0.9))", duration: 0.08 },
+      { filter: "drop-shadow(0px 0px 0px rgba(242,85,60,0))", duration: 0.12 }] }, 4.2);
+    tl.to("#mp-route", { attr: { stroke: "#A9AEB8" }, duration: 0.15 }, 4.25);
+    tl.fromTo("#mp-t2", { opacity: 1 }, { opacity: 0, duration: 0.05, immediateRender: false }, 4.3);
+    tl.fromTo("#mp-spin", { opacity: 1 }, { opacity: 0, duration: 0.05, immediateRender: false }, 4.3);
+    tl.fromTo("#mp-t3", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 4.35);
+    tl.fromTo("#mp-card", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 4.75);
+    tl.fromTo("#mp-title span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power2.out" }, 4.9);
+    window.__timelines["map"] = tl;
+  </script>
+</template>

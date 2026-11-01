@@ -1,0 +1,45 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #FFE3A3; overflow: hidden; font-family: "Outfit", sans-serif; }
+    .tr-phone { position: absolute; left: 1180px; top: 75px; width: 450px; height: 930px; border-radius: 68px;
+      background: #1B1C20; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+    #tr-ph { position: absolute; inset: 0; }
+    .tr-screen { position: relative; width: 100%; height: 100%; border-radius: 56px; overflow: hidden; background: #F3F5F9; }
+    #tr-head { position: absolute; left: 34px; top: 64px; font-weight: 700; font-size: 46px; color: #121317; }
+    #tr-lang { position: absolute; left: 34px; top: 136px; font-weight: 500; font-size: 28px; color: #5A5F6B; }
+    .tr-box { position: absolute; left: 22px; width: 378px; border-radius: 26px; background: #FFFFFF; padding: 26px 28px; box-shadow: 0 4px 12px rgba(18,19,23,0.08); }
+    #tr-in { top: 200px; height: 220px; }
+    #tr-out { top: 450px; height: 220px; }
+    .tr-lab { font-weight: 500; font-size: 28px; color: #8A8F9B; }
+    #tr-q { margin-top: 18px; font-weight: 700; font-size: 44px; color: #121317; white-space: nowrap; }
+    #tr-dots { position: absolute; left: 28px; top: 90px; font-weight: 700; font-size: 60px; color: #8A8F9B; letter-spacing: 0.1em; }
+    #tr-fail { position: absolute; left: 28px; top: 84px; width: 330px; font-weight: 700; font-size: 36px; line-height: 1.15; color: #F2553C; opacity: 0; }
+    #tr-t1, #tr-t2 { position: absolute; left: 192px; width: 880px; font-family: "Archivo Black", sans-serif; font-size: 76px; line-height: 1.12; letter-spacing: -0.02em; }
+    #tr-t1 { top: 260px; color: #121317; }
+    #tr-t2 { top: 560px; color: #F2553C; }
+    #tr-t1 span, #tr-t2 span { display: inline-block; margin-right: 0.24em; }
+  </style>
+  <div id="root" data-composition-id="translate" data-width="1920" data-height="1080">
+    <div id="tr-ph"><div class="tr-phone"><div class="tr-screen">
+      <div id="tr-head">Translate</div>
+      <div id="tr-lang">French → English</div>
+      <div id="tr-in" class="tr-box"><div class="tr-lab">A tourist asks Sam</div><div id="tr-q"></div></div>
+      <div id="tr-out" class="tr-box"><div class="tr-lab">English</div><div id="tr-dots">···</div><div id="tr-fail">Translation unavailable</div></div>
+    </div></div></div>
+    <div id="tr-t1"><span>A</span><span>tourist</span><span>asks</span><span>for</span><span>the</span><span>station.</span></div>
+    <div id="tr-t2"><span>Translate</span><span>says</span><span>nothing.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#tr-ph", { scale: 1.12 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0);
+    tl.fromTo("#tr-t1 span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power2.out" }, 0.4);
+    const q = "Où est la gare ?", qEl = document.querySelector("#tr-q"), typed = { n: 0 };
+    tl.fromTo(typed, { n: 0 }, { n: q.length, duration: 1.2, ease: "none", onUpdate: () => { qEl.textContent = q.slice(0, Math.round(typed.n)); } }, 0.7);
+    tl.fromTo("#tr-dots", { opacity: 0.25 }, { keyframes: [{ opacity: 1, duration: 0.3 }, { opacity: 0.25, duration: 0.3 }, { opacity: 1, duration: 0.3 }, { opacity: 0.25, duration: 0.3 }] }, 2.0);
+    tl.to("#tr-ph", { keyframes: [{ x: 12, duration: 0.04 }, { x: -14, duration: 0.05 }, { x: 6, duration: 0.04 }, { x: 0, duration: 0.06 }] }, 3.3);
+    tl.fromTo("#tr-dots", { opacity: 1 }, { opacity: 0, duration: 0.05, immediateRender: false }, 3.32);
+    tl.fromTo("#tr-fail", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 3.38);
+    tl.fromTo("#tr-t2 span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power2.out" }, 3.8);
+    window.__timelines["translate"] = tl;
+  </script>
+</template>

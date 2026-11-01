@@ -1,0 +1,45 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #2348F2; overflow: hidden; font-family: "Outfit", sans-serif; }
+    #lk-cam { position: absolute; inset: 0; transform-origin: 1405px 523px; }
+    .lk-phone { position: absolute; left: 1180px; top: 75px; width: 450px; height: 930px; border-radius: 68px;
+      background: #1B1C20; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+    .lk-screen { position: relative; width: 100%; height: 100%; border-radius: 56px; overflow: hidden; background: #DCE4FF; }
+    #lk-time { position: absolute; top: 120px; width: 100%; text-align: center; font-weight: 700; font-size: 120px; color: #121317; letter-spacing: -0.02em; }
+    #lk-date { position: absolute; top: 262px; width: 100%; text-align: center; font-weight: 500; font-size: 34px; color: #121317; }
+    .lk-note { position: absolute; left: 22px; width: 378px; height: 108px; border-radius: 26px; background: #FFFFFF;
+      box-shadow: 0 6px 16px rgba(18,19,23,0.12); display: flex; align-items: center; gap: 18px; padding: 0 20px; }
+    .lk-icon { width: 60px; height: 60px; border-radius: 16px; flex: none; }
+    .lk-app { font-weight: 700; font-size: 30px; color: #121317; }
+    .lk-msg { font-weight: 500; font-size: 28px; color: #4A4E59; margin-top: 2px; }
+    #lk-title { position: absolute; left: 192px; top: 280px; font-family: "Archivo Black", sans-serif; font-size: 150px; color: #FFFFFF; letter-spacing: -0.02em; }
+    #lk-title span { display: inline-block; }
+    #lk-sub { position: absolute; left: 196px; top: 500px; width: 820px; font-weight: 500; font-size: 46px; line-height: 1.25; color: #FFFFFF; }
+    #lk-flash { position: absolute; inset: 0; background: #EEF0F4; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="lock" data-width="1920" data-height="1080">
+    <div id="lk-cam">
+      <div class="lk-phone"><div class="lk-screen">
+        <div id="lk-time">08:00</div>
+        <div id="lk-date">Tuesday</div>
+        <div id="lk-n1" class="lk-note" style="top:380px"><div class="lk-icon" style="background:#2348F2"></div><div><div class="lk-app">Maps</div><div class="lk-msg">12 min to work</div></div></div>
+        <div id="lk-n2" class="lk-note" style="top:504px"><div class="lk-icon" style="background:#F2553C"></div><div><div class="lk-app">Mail</div><div class="lk-msg">3 new messages</div></div></div>
+        <div id="lk-n3" class="lk-note" style="top:628px"><div class="lk-icon" style="background:#1E6B52"></div><div><div class="lk-app">Wallet</div><div class="lk-msg">Card ready for coffee</div></div></div>
+      </div></div>
+    </div>
+    <div id="lk-title"><span>8</span><span>:</span><span>0</span><span>0</span><span>&nbsp;</span><span>a</span><span>.</span><span>m</span><span>.</span></div>
+    <div id="lk-sub">Sam's phone is about to have a very strange morning.</div>
+    <div id="lk-flash"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#lk-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 1.7);
+    ["#lk-n1", "#lk-n2", "#lk-n3"].forEach((id, i) => {
+      tl.fromTo(id, { opacity: 0, y: -40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 0.9 + i * 0.35);
+    });
+    tl.to(["#lk-title", "#lk-sub"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 4.2);
+    tl.fromTo("#lk-cam", { scale: 1, filter: "blur(0px)" }, { scale: 9, filter: "blur(10px)", duration: 1.0, ease: "power3.in" }, 4.45);
+    tl.fromTo("#lk-flash", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.in" }, 5.25);
+    window.__timelines["lock"] = tl;
+  </script>
+</template>
