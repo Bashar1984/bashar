@@ -69,7 +69,7 @@ python3 vox_ar_video.py --captions              # print caption timings to recor
 
 `vox_ar_voice.py` syncs the Arabic video to a voice recording:
 
-- It cleans up the voice: hum and hiss reduction, a gate for the pauses, EQ, de-essing, compression, and loudness at -14 LUFS.
+- It cleans up the voice: hum and hiss reduction, a gate for the pauses, EQ, de-essing, compression, and loudness at about -15 LUFS.
 - It time-warps the animation so each sentence's scene and caption start when that sentence is spoken.
 - It ducks the music under the voice and adds sound effects (whooshes, glitch buzz, stamp hits, typing, pops, dings, a riser and impacts).
 

@@ -50,7 +50,7 @@ VOICE_FILTER = ("highpass=f=80,afftdn=nf=-42:nr=20:tn=1,"
                 "agate=threshold=0.02:ratio=4:attack=5:release=120:range=0.1,"
                 "equalizer=f=250:t=q:w=1.2:g=-2,equalizer=f=3500:t=q:w=1.5:g=2.5,deesser=i=0.3,"
                 "acompressor=threshold=-20dB:ratio=2.5:attack=8:release=150:makeup=2dB,"
-                "loudnorm=I=-16:TP=-1.5:LRA=9,alimiter=limit=0.89")
+                "loudnorm=I=-16:TP=-1.5:LRA=9,alimiter=limit=0.89:level=disabled")
 
 
 class Warp:
@@ -273,7 +273,7 @@ def main():
             "[mu][sc]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=450[duck];"
             "[2:a]volume=0.55[fx];"
             "[vo][duck][fx]amix=inputs=3:duration=longest:normalize=0,"
-            f"atrim=0:{WARP.total:.3f},loudnorm=I=-14:TP=-1.0:LRA=11,alimiter=limit=0.9[out]",
+            f"atrim=0:{WARP.total:.3f},loudnorm=I=-15:TP=-1.5:LRA=11,alimiter=limit=0.84:level=disabled[out]",
             "-map", "[out]", "-ar", str(SR), mix], check=True)
 
         frames = int(WARP.total * FPS)
