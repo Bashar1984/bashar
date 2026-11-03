@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hello-connector
+    runtime: python
+    plan: free
+    rootDir: hello_connector
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: PYTHON_VERSION
+        value: 3.12.7

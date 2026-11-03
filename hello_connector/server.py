@@ -1,3 +1,5 @@
+import os
+
 from mcp.server.mcpserver import MCPServer
 
 mcp = MCPServer("hello-connector")
@@ -9,4 +11,10 @@ def word_count(text: str) -> int:
     return len(text.split())
 
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http", stateless_http=True)
+    # Hosts like Render set PORT; HOST=0.0.0.0 makes the server reachable from outside.
+    mcp.run(
+        transport="streamable-http",
+        stateless_http=True,
+        host=os.environ.get("HOST", "127.0.0.1"),
+        port=int(os.environ.get("PORT", "8000")),
+    )
