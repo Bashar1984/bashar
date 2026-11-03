@@ -1,6 +1,6 @@
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
-mcp = FastMCP("hello-connector", stateless_http=True)
+mcp = MCPServer("hello-connector")
 
 @mcp.tool()
 def word_count(text: str) -> int:
@@ -9,4 +9,4 @@ def word_count(text: str) -> int:
     return len(text.split())
 
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http")
+    mcp.run(transport="streamable-http", stateless_http=True)
